@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
+@font-face {
+  font-family: Slack v2;
+  font-style: normal;
+  font-weight: 400;
+  src: url("https://github.com/Aika-Toki/Slack-Theme-Customizer/raw/master/slack-icons-v2-fe043a5.woff2");
+}
+:root {
+  --sidebar-bg: #fff;
+  --sidebar-item-bg-select: #000;
+  --sidebar-item-bg-hover: #fff;
+  --sidebar-item-fg: #000;
+  --sidebar-item-fg-select: #fff;
+  --topnav-bg: #000;
+  --topnav-fg: #fff;
+  --active-badge: #fff;
+  --mention-badge: #000;
+}
+
+body {
+  background-color: #333;
+  margin: 0;
+}
+
+#overlay-top {
+  z-index: 9999;
+  width: 100vw;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.5333333333);
+  border-radius: 0 0 10px 10px;
+  padding: 25px 0;
+  transform: translateY(-210px);
+  filter: drop-shadow(0px 2px 5px #000);
+  transition: 300ms 0ms ease-in-out;
+  transition-property: transform, opacity;
+  justify-content: center;
+  align-items: center;
+  opacity: 30%;
+}
+#overlay-top:hover {
+  transform: translateY(0px);
+  opacity: 100%;
+}
+#overlay-top > input {
+  height: 3vh;
+  width: 90vw;
+  font-size: 20px;
+  font-family: "Syne Mono", monospace;
+  text-align: center;
+  border-radius: 50px;
+}
+#overlay-top > button {
+  height: 6vh;
+  width: 60vw;
+  font-size: 20px;
+  border-radius: 50px;
+}
+#overlay-top > div#colorPreview {
+  display: flex;
+  justify-content: center;
+}
+#overlay-top > div#colorPreview > div {
+  background-color: var(--bgColor);
+  height: 88px;
+  width: 88px;
+  border-radius: 50px;
+  margin: 0 5px;
+}
+
+div#preview {
+  width: 100vw;
+  height: 100vh;
+}
+div#preview > .navbar {
+  height: 5%;
+  background-color: var(--topnav-bg);
+}
+div#preview > .wrapper {
+  height: 95%;
+  display: flex;
+}
+div#preview > .wrapper > .sidebar {
+  width: 20%;
+  background-color: var(--sidebar-bg);
+  color: var(--sidebar-item-fg);
+  display: flex;
+  flex-direction: column;
+}
+div#preview > .wrapper > .sidebar > .header {
+  color: var(--sidebar-item-fg);
+  background-color: var(--sidebar-bg);
+  display: flex;
+  align-items: stretch;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.3;
+  min-height: 50px;
+  flex-direction: column;
+  position: relative;
+}
+div#preview > .wrapper > .sidebar > .header > .button {
+  align-items: center;
+  background-clip: padding-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1019607843);
+  display: flex;
+  flex: 1;
+  flex-direction: row-reverse;
+  min-height: inherit;
+  min-width: 0;
+  padding: 0 19px 0 16px;
+  position: relative;
+  transition-duration: 80ms;
+  transition-property: background-color, border-color;
+  transition-timing-function: cubic-bezier(0.36, 0.19, 0.29, 1);
+  z-index: 1;
+  outline: none;
+  padding-right: 54px;
+  background-color: initial;
+  border-color: var(--sidebar-bg);
+}
+div#preview > .wrapper > .sidebar > .header > .button > .info {
+  flex: 1;
+  order: 1;
+}
+div#preview > .wrapper > .sidebar > .header > .button > .info > .team_name {
+  align-items: center;
+  border-radius: 6px;
+  display: flex;
+  margin-left: -4px;
+  max-width: 100%;
+  padding: 4px 4px 4px 8px;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  margin: 0;
+  overflow: initial;
+  text-align: initial;
+  vertical-align: initial;
+}
+div#preview > .wrapper > .sidebar > .header > .button > .info > .team_name > .team_name_text {
+  display: block;
+  font-weight: 900;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+div#preview > .wrapper > .sidebar > .header > .button > .info > .team_name > .menu_icon {
+  flex-shrink: 0;
+  width: 20px;
+}
+div#preview > .wrapper > .sidebar > .header > .button > .info > .team_name > .menu_icon > svg {
+  display: block;
+  flex-shrink: 0;
+  font-size: var(--s, inherit);
+  height: 1em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  width: 1em;
+}
+div#preview > .wrapper > .sidebar > .header > .compose_button {
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  line-height: inherit;
+  margin: 0;
+  overflow: initial;
+  padding: 0;
+  text-align: initial;
+  vertical-align: initial;
+  fill: var(--sidebar-bg);
+  align-items: center;
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.0784313725);
+  color: var(--sidebar-bg);
+  display: flex;
+  font-size: 18px;
+  height: 34px;
+  justify-content: center;
+  position: absolute;
+  right: 16px;
+  top: 8px;
+  transition-duration: 80ms;
+  transition-property: box-shadow, transform, background-color;
+  transition-timing-function: cubic-bezier(0.175, 0.875, 0.5, 1.5);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+       user-select: none;
+  width: 34px;
+  z-index: 3;
+  background: var(--sidebar-item-fg);
+}
+div#preview > .wrapper > .sidebar > .header > .compose_button > svg {
+  display: block;
+  flex-shrink: 0;
+  font-size: var(--s, inherit);
+  height: 1em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  width: 1em;
+}
+div#preview > .wrapper > .content {
+  width: 80%;
+}/*# sourceMappingURL=style.css.map */

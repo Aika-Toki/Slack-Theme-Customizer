@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Slack Theme Customizer</title>
+    <link
+      rel="stylesheet"
+      href="./style.css"
+    />
+  </head>
+  <body>
+    <div id="overlay-top">
+      <button id="random">Random!!</button>
+      <input
+        type="text"
+        id="colorInput"
+      />
+      <div id="colorPreview">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <!-- <div></div> -->
+      </div>
+    </div>
+    <div
+      id="preview"
+      class="client"
+    >
+      <div class="navbar"></div>
+      <div class="wrapper">
+        <div class="sidebar">
+          <div class="header">
+            <div class="button">
+              <div class="info">
+                <button class="team_name">
+                  <span class="team_name_text">Workspace</span>
+                  <span class="menu_icon">
+                    <svg
+                      data-wbq="true"
+                      aria-hidden="true"
+                      viewBox="0 0 20 20"
+                      class=""
+                    >
+                      <path
+                        fill="currentColor"
+                        fill-rule="evenodd"
+                        d="M5.72 7.47a.75.75 0 0 1 1.06 0L10 10.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-3.75 3.75a.75.75 0 0 1-1.06 0L5.72 8.53a.75.75 0 0 1 0-1.06Z"
+                        clip-rule="evenodd"
+                      ></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <button class="compose_button">
+              <svg
+                data-wbq="true"
+                aria-hidden="true"
+                viewBox="0 0 20 20"
+                class=""
+              >
+                <path
+                  fill="currentColor"
+                  fill-rule="evenodd"
+                  d="M16.707 3.268a1 1 0 0 0-1.414 0l-.482.482 1.439 1.44.482-.483a1 1 0 0 0 0-1.414l-.025-.025ZM15.19 6.25l-1.44-1.44-5.068 5.069-.431 1.871 1.87-.431L15.19 6.25Zm-.957-4.043a2.5 2.5 0 0 1 3.536 0l.025.025a2.5 2.5 0 0 1 0 3.536L11.03 12.53a.75.75 0 0 1-.361.2l-3.25.75a.75.75 0 0 1-.9-.899l.75-3.25a.75.75 0 0 1 .2-.361l6.763-6.763ZM5.25 4A2.25 2.25 0 0 0 3 6.25v8.5A2.25 2.25 0 0 0 5.25 17h8.5A2.25 2.25 0 0 0 16 14.75v-4.5a.75.75 0 1 1 1.5 0v4.5a3.75 3.75 0 0 1-3.75 3.75h-8.5a3.75 3.75 0 0 1-3.75-3.75v-8.5A3.75 3.75 0 0 1 5.25 2.5h4.5a.75.75 0 0 1 0 1.5h-4.5Z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="group">
+            <div class="classic_nav">
+              <div class="list">
+                <div>
+                  <button class="banner--mentions"></button>
+                  <div>
+                    <div class="virtual_list">
+                      <div class="hider">
+                        <div class="child">
+                          <div class="scroll_container">
+
+                            <div class="item__row_container">
+                              <div class="section_heading">
+                                <span class="section_heading_expand_container"><p class="section_heading_expand">▼</p></span>
+                                <div class="section_heading_label"><button class="section_heading_button"><span class="truncate"><div class="overflow_ellipsis">Channels</div></span></button></div>
+                              </div>
+                            </div>
+                            
+                            <div class="item__row_container">
+                              <div class="channel">
+                                <div class="channel_icon_prefix"></div>
+                                <span class="name">Channel</span>
+                                <span class="channel_suffix"></span>
+                              </div>
+                            </div>
+                            
+                            <div class="item__row_container">
+                              <div class="channel">
+                                <div class="channel_icon_prefix"></div>
+                                <span class="name">Selected Channel</span>
+                                <span class="channel_suffix"></span>
+                              </div>
+                            </div>
+                            
+                            <div class="item__row_container">
+                              <div class="channel">
+                                <div class="channel_icon_prefix"></div>
+                                <span class="name">Hovered Channel</span>
+                                <span class="channel_suffix"></span>
+                              </div>
+                            </div>
+                            
+                            <div class="item__row_container">
+                              <div class="channel--unread">
+                                <div class="channel_icon_prefix">
+                                  <svg
+                                  data-wbq="true"
+                                  aria-hidden="true"
+                                  data-qa="sidebar-channel-icon-prefix"
+                                  data-sidebar-channel-icon="channel"
+                                  viewBox="0 0 20 20"
+                                  class=""
+                                  style="--s: 16px"
+                                  >
+                                  <path
+                                  fill="currentColor"
+                                  fill-rule="evenodd"
+                                  d="M9.984 4.176a1 1 0 0 0-1.968-.352L7.448 7H4a1 1 0 1 0 0 2h3.091l-.803 4.5H3a1 1 0 1 0 0 2h2.93l-.414 2.324a1 1 0 0 0 1.968.352l.478-2.676h2.719l-.415 2.324a1 1 0 1 0 1.968.352l.478-2.676H16a1 1 0 1 0 0-2h-2.93l.803-4.5H17a1 1 0 1 0 0-2h-2.77l.504-2.824a1 1 0 1 0-1.968-.352L12.198 7H9.48l.504-2.824Zm1.054 9.324L11.84 9H9.123l-.804 4.5h2.719Z"
+                                  clip-rule="evenodd"
+                                      ></path>
+                                    </svg>
+                                  </div>
+                                  <span class="name">Unread Channel</span>
+                                  <span class="channel_suffix"></span>
+                                </div>
+                              </div>
+                              
+                              <div class="item__row_container">
+                                <div class="channel--mention">
+                                  <div class="channel_icon_prefix">
+                                    <svg
+                                    data-wbq="true"
+                                      aria-hidden="true"
+                                      data-qa="sidebar-channel-icon-prefix"
+                                      data-sidebar-channel-icon="channel"
+                                      viewBox="0 0 20 20"
+                                      class=""
+                                      style="--s: 16px"
+                                    >
+                                      <path
+                                        fill="currentColor"
+                                        fill-rule="evenodd"
+                                        d="M9.984 4.176a1 1 0 0 0-1.968-.352L7.448 7H4a1 1 0 1 0 0 2h3.091l-.803 4.5H3a1 1 0 1 0 0 2h2.93l-.414 2.324a1 1 0 0 0 1.968.352l.478-2.676h2.719l-.415 2.324a1 1 0 1 0 1.968.352l.478-2.676H16a1 1 0 1 0 0-2h-2.93l.803-4.5H17a1 1 0 1 0 0-2h-2.77l.504-2.824a1 1 0 1 0-1.968-.352L12.198 7H9.48l.504-2.824Zm1.054 9.324L11.84 9H9.123l-.804 4.5h2.719Z"
+                                        clip-rule="evenodd"
+                                        ></path>
+                                      </svg>
+                                    </div>
+                                    <span class="name">Mention Channel</span>
+                                    <span class="channel_suffix">
+                                      <span class="badge"></span>
+                                    </span>
+                                  </div>
+                                </div>
+                                
+                                <div class="item__row_container">
+                                  <div class="section_heading">
+                                    <span class="section_heading_expand_container"><p class="section_heading_expand">▼</p></span>
+                                    <div class="section_heading_label"><button class="section_heading_button"><span class="truncate"><div class="overflow_ellipsis">Direct Messages</div></span></button></div>
+                                  </div>
+                                </div>
+
+                                <div class="item__row_container">
+                                  <div class="close_container">
+                                    <div class="channel">
+                                      <div class="user_avatar">
+                                        <span class="avatar">
+                                          <span class="width_only_container">
+                                            <img src="">
+                                          </span>
+                                        </span>
+                                        <div class="user_avatar_presence_bg"></div>
+                                        <i class="presence-online-border"></i>
+                                        <i class="presence-online"></i>
+                                      </div>
+                                      <div class="name">
+                                        <span>User</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="banner--unreads"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content"></div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
