@@ -13,7 +13,7 @@ function generateColor() {
 function getColorScheme(colorstr) {
   console.log(colorstr);
   let _default =
-    "#3F0E40,#000000,#1164A3,#FFFFFF,#4D2A51,#FFFFFF,#2BAC76,#ECE7EC,#350d36,#FFFFFF";
+    "#3F0E40,#000000,#1164A3,#FFFFFF,#4D2A51,#FFFFFF,#2BAC76,#CD2553,#350d36,#FFFFFF";
   let result = [];
   let property = [
     "sidebar-bg",
@@ -34,6 +34,12 @@ function getColorScheme(colorstr) {
     document
       .querySelector(":root")
       .style.setProperty(`--${property[i]}`, result[i]);
+    let a = result[i].substr(1, 6).match(/.{2}/g);
+    a = a.map((e) => parseInt(e, 16));
+    console.log(a);
+    document
+      .querySelector(":root")
+      .style.setProperty(`--${property[i]}-rgb`, a.join(", "));
   }
   // document.body.innerHTML =
   //   '<input type="text" value="' +
