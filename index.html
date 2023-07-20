@@ -1,24 +1,25 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+      content="width=device-width, initial-scale=1.0" />
     <title>Slack Theme Customizer</title>
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" /> -->
+
     <link
       rel="stylesheet"
-      href="./style.css"
-    />
+      href="./style.css" />
   </head>
   <body>
     <div id="overlay-top">
       <button id="random">Random!!</button>
       <input
         type="text"
-        id="colorInput"
-      />
+        id="colorInput" />
       <div id="colorPreview">
         <div></div>
         <div></div>
@@ -34,8 +35,7 @@
     </div>
     <div
       id="preview"
-      class="client"
-    >
+      class="client">
       <div class="top_nav">
         <div class="sidebar">
           <button class="history_menu">
@@ -44,14 +44,12 @@
               aria-hidden="true"
               viewBox="0 0 20 20"
               class=""
-              style="--s: 20px"
-            >
+              style="--s: 20px">
               <path
                 fill="currentColor"
                 fill-rule="evenodd"
                 d="M2.5 10a7.5 7.5 0 1 1 15 0 7.5 7.5 0 0 1-15 0ZM10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm.75 4.75a.75.75 0 0 0-1.5 0v5.5h4.5a.75.75 0 0 0 0-1.5h-3v-4Z"
-                clip-rule="evenodd"
-              ></path>
+                clip-rule="evenodd"></path>
             </svg>
           </button>
         </div>
@@ -62,17 +60,15 @@
                 data-wbq="true"
                 aria-hidden="true"
                 viewBox="0 0 20 20"
-                class=""
-              >
+                class="">
                 <path
                   fill="currentColor"
                   fill-rule="evenodd"
                   d="M9 3a6 6 0 1 0 0 12A6 6 0 0 0 9 3ZM1.5 9a7.5 7.5 0 1 1 13.307 4.746l3.473 3.474a.75.75 0 1 1-1.06 1.06l-3.473-3.473A7.5 7.5 0 0 1 1.5 9Z"
-                  clip-rule="evenodd"
-                ></path>
+                  clip-rule="evenodd"></path>
               </svg>
             </div>
-            <span class="text">Search Workspace</span>
+            <span class="text">{interface.search}</span>
           </button>
           <button class="filters">
             <svg
@@ -80,14 +76,12 @@
               aria-hidden="true"
               viewBox="0 0 20 20"
               class=""
-              style="--s: 16px"
-            >
+              style="--s: 16px">
               <path
                 fill="currentColor"
                 fill-rule="evenodd"
                 d="M13.5 3.25a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-2.386.25a2.501 2.501 0 0 1 4.772 0h1.864a.75.75 0 0 1 0 1.5h-1.864a2.501 2.501 0 0 1-4.771 0H2.25a.75.75 0 0 1 0-1.5h8.864Zm-7 5.75a2.501 2.501 0 0 1 4.772 0h8.864a.75.75 0 0 1 0 1.5H8.886a2.501 2.501 0 0 1-4.772 0H2.25a.75.75 0 0 1 0-1.5h1.864ZM6.5 9a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm6 5.75a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm-2.386.25a2.501 2.501 0 0 1 4.772 0h2.864a.75.75 0 0 1 0 1.5h-2.864a2.501 2.501 0 0 1-4.771 0H2.25a.75.75 0 0 1 0-1.5h7.864Z"
-                clip-rule="evenodd"
-              ></path>
+                clip-rule="evenodd"></path>
             </svg>
           </button>
         </div>
@@ -102,14 +96,12 @@
                       aria-hidden="true"
                       viewBox="0 0 20 20"
                       class=""
-                      style="--s: 20px"
-                    >
+                      style="--s: 20px">
                       <path
                         fill="currentColor"
                         fill-rule="evenodd"
                         d="M10 2.5a7.5 7.5 0 1 0 0 15 7.5 7.5 0 0 0 0-15ZM1 10a9 9 0 1 1 18 0 9 9 0 0 1-18 0Zm7.883-2.648c-.23.195-.383.484-.383.898a.75.75 0 0 1-1.5 0c0-.836.333-1.547.91-2.04.563-.48 1.31-.71 2.09-.71.776 0 1.577.227 2.2.729.642.517 1.05 1.294 1.05 2.271 0 .827-.264 1.515-.807 2.001-.473.423-1.08.623-1.693.703V12h-1.5v-1c0-.709.566-1.211 1.18-1.269.507-.048.827-.18 1.013-.347.162-.145.307-.39.307-.884 0-.523-.203-.87-.492-1.104C10.951 7.148 10.502 7 10 7c-.497 0-.876.146-1.117.352ZM10 15a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-                        clip-rule="evenodd"
-                      ></path>
+                        clip-rule="evenodd"></path>
                     </svg>
                   </button>
                 </div>
@@ -121,9 +113,7 @@
               <div class="user">
                 <span class="avatar">
                   <span class="width_only_container">
-                    <img
-                      src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png"
-                    />
+                    <img src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png" />
                   </span>
                 </span>
                 <i class="presence--stroke"></i>
@@ -139,20 +129,18 @@
             <div class="button">
               <div class="info">
                 <button class="team_name">
-                  <span class="team_name_text">Workspace</span>
+                  <span class="team_name_text">{interface.workspace}</span>
                   <span class="menu_icon">
                     <svg
                       data-wbq="true"
                       aria-hidden="true"
                       viewBox="0 0 20 20"
-                      class=""
-                    >
+                      class="">
                       <path
                         fill="currentColor"
                         fill-rule="evenodd"
                         d="M5.72 7.47a.75.75 0 0 1 1.06 0L10 10.69l3.22-3.22a.75.75 0 1 1 1.06 1.06l-3.75 3.75a.75.75 0 0 1-1.06 0L5.72 8.53a.75.75 0 0 1 0-1.06Z"
-                        clip-rule="evenodd"
-                      ></path>
+                        clip-rule="evenodd"></path>
                     </svg>
                   </span>
                 </button>
@@ -163,14 +151,12 @@
                 data-wbq="true"
                 aria-hidden="true"
                 viewBox="0 0 20 20"
-                class=""
-              >
+                class="">
                 <path
                   fill="currentColor"
                   fill-rule="evenodd"
                   d="M16.707 3.268a1 1 0 0 0-1.414 0l-.482.482 1.439 1.44.482-.483a1 1 0 0 0 0-1.414l-.025-.025ZM15.19 6.25l-1.44-1.44-5.068 5.069-.431 1.871 1.87-.431L15.19 6.25Zm-.957-4.043a2.5 2.5 0 0 1 3.536 0l.025.025a2.5 2.5 0 0 1 0 3.536L11.03 12.53a.75.75 0 0 1-.361.2l-3.25.75a.75.75 0 0 1-.9-.899l.75-3.25a.75.75 0 0 1 .2-.361l6.763-6.763ZM5.25 4A2.25 2.25 0 0 0 3 6.25v8.5A2.25 2.25 0 0 0 5.25 17h8.5A2.25 2.25 0 0 0 16 14.75v-4.5a.75.75 0 1 1 1.5 0v4.5a3.75 3.75 0 0 1-3.75 3.75h-8.5a3.75 3.75 0 0 1-3.75-3.75v-8.5A3.75 3.75 0 0 1 5.25 2.5h4.5a.75.75 0 0 1 0 1.5h-4.5Z"
-                  clip-rule="evenodd"
-                ></path>
+                  clip-rule="evenodd"></path>
               </svg>
             </button>
           </div>
@@ -184,17 +170,15 @@
                         data-wbq="true"
                         aria-hidden="true"
                         viewBox="0 0 20 20"
-                        class="is-inline"
-                      >
+                        class="is-inline">
                         <path
                           fill="currentColor"
                           fill-rule="evenodd"
                           d="M10.543 3.232a.75.75 0 0 0-1.086 0l-5.25 5.5a.75.75 0 0 0 1.086 1.036L9.25 5.622V16.25a.75.75 0 0 0 1.5 0V5.622l3.957 4.146a.75.75 0 0 0 1.085-1.036l-5.25-5.5Z"
-                          clip-rule="evenodd"
-                        ></path>
+                          clip-rule="evenodd"></path>
                       </svg>
                     </span>
-                    Unread mentions
+                    {interface.unreadMentionsBadge}
                   </button>
                   <div>
                     <div class="virtual_list">
@@ -203,17 +187,11 @@
                           <div class="scroll_container">
                             <div class="item__contain">
                               <div class="section_heading">
-                                <span class="section_heading_expand_container"
-                                  ><i class="section_heading_expand"></i
-                                ></span>
+                                <span class="section_heading_expand_container"><i class="section_heading_expand"></i></span>
                                 <div class="section_heading_label">
                                   <div class="coachmark_anchor">
                                     <button class="section_heading_button">
-                                      <span class="truncate"
-                                        ><div class="overflow_ellipsis">
-                                          Channels
-                                        </div></span
-                                      >
+                                      <span class="truncate"><div class="overflow_ellipsis">{interface.channelSection}</div></span>
                                     </button>
                                   </div>
                                 </div>
@@ -230,17 +208,15 @@
                                     data-sidebar-channel-icon="channel"
                                     viewBox="0 0 20 20"
                                     class=""
-                                    style="--s: 16px"
-                                  >
+                                    style="--s: 16px">
                                     <path
                                       fill="currentColor"
                                       fill-rule="evenodd"
                                       d="M9.74 3.878a.75.75 0 1 0-1.48-.255L7.68 7H3.75a.75.75 0 0 0 0 1.5h3.67L6.472 14H2.75a.75.75 0 0 0 0 1.5h3.463l-.452 2.623a.75.75 0 0 0 1.478.255l.496-2.878h3.228l-.452 2.623a.75.75 0 0 0 1.478.255l.496-2.878h3.765a.75.75 0 0 0 0-1.5h-3.506l.948-5.5h3.558a.75.75 0 0 0 0-1.5h-3.3l.54-3.122a.75.75 0 0 0-1.48-.255L12.43 7H9.2l.538-3.122ZM11.221 14l.948-5.5H8.942L7.994 14h3.228Z"
-                                      clip-rule="evenodd"
-                                    ></path>
+                                      clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name">Channel</span>
+                                <span class="name">{interface.channel}</span>
                                 <span class="channel_suffix"></span>
                               </div>
                             </div>
@@ -255,17 +231,15 @@
                                     data-sidebar-channel-icon="channel"
                                     viewBox="0 0 20 20"
                                     class=""
-                                    style="--s: 16px"
-                                  >
+                                    style="--s: 16px">
                                     <path
                                       fill="currentColor"
                                       fill-rule="evenodd"
                                       d="M9.74 3.878a.75.75 0 1 0-1.48-.255L7.68 7H3.75a.75.75 0 0 0 0 1.5h3.67L6.472 14H2.75a.75.75 0 0 0 0 1.5h3.463l-.452 2.623a.75.75 0 0 0 1.478.255l.496-2.878h3.228l-.452 2.623a.75.75 0 0 0 1.478.255l.496-2.878h3.765a.75.75 0 0 0 0-1.5h-3.506l.948-5.5h3.558a.75.75 0 0 0 0-1.5h-3.3l.54-3.122a.75.75 0 0 0-1.48-.255L12.43 7H9.2l.538-3.122ZM11.221 14l.948-5.5H8.942L7.994 14h3.228Z"
-                                      clip-rule="evenodd"
-                                    ></path>
+                                      clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name">Selected Channel</span>
+                                <span class="name">{interface.selectedChannel}</span>
                                 <span class="channel_suffix"></span>
                               </div>
                             </div>
@@ -280,17 +254,15 @@
                                     data-sidebar-channel-icon="channel"
                                     viewBox="0 0 20 20"
                                     class=""
-                                    style="--s: 16px"
-                                  >
+                                    style="--s: 16px">
                                     <path
                                       fill="currentColor"
                                       fill-rule="evenodd"
                                       d="M9.74 3.878a.75.75 0 1 0-1.48-.255L7.68 7H3.75a.75.75 0 0 0 0 1.5h3.67L6.472 14H2.75a.75.75 0 0 0 0 1.5h3.463l-.452 2.623a.75.75 0 0 0 1.478.255l.496-2.878h3.228l-.452 2.623a.75.75 0 0 0 1.478.255l.496-2.878h3.765a.75.75 0 0 0 0-1.5h-3.506l.948-5.5h3.558a.75.75 0 0 0 0-1.5h-3.3l.54-3.122a.75.75 0 0 0-1.48-.255L12.43 7H9.2l.538-3.122ZM11.221 14l.948-5.5H8.942L7.994 14h3.228Z"
-                                      clip-rule="evenodd"
-                                    ></path>
+                                      clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name">Hovered Channel</span>
+                                <span class="name">{interface.hoveredChannel}</span>
                                 <span class="channel_suffix"></span>
                               </div>
                             </div>
@@ -305,17 +277,15 @@
                                     data-sidebar-channel-icon="channel"
                                     viewBox="0 0 20 20"
                                     class=""
-                                    style="--s: 16px"
-                                  >
+                                    style="--s: 16px">
                                     <path
                                       fill="currentColor"
                                       fill-rule="evenodd"
                                       d="M9.984 4.176a1 1 0 0 0-1.968-.352L7.448 7H4a1 1 0 1 0 0 2h3.091l-.803 4.5H3a1 1 0 1 0 0 2h2.93l-.414 2.324a1 1 0 0 0 1.968.352l.478-2.676h2.719l-.415 2.324a1 1 0 1 0 1.968.352l.478-2.676H16a1 1 0 1 0 0-2h-2.93l.803-4.5H17a1 1 0 1 0 0-2h-2.77l.504-2.824a1 1 0 1 0-1.968-.352L12.198 7H9.48l.504-2.824Zm1.054 9.324L11.84 9H9.123l-.804 4.5h2.719Z"
-                                      clip-rule="evenodd"
-                                    ></path>
+                                      clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name">Unread Channel</span>
+                                <span class="name">{interface.unreadChannel}</span>
                                 <span class="channel_suffix"></span>
                               </div>
                             </div>
@@ -330,17 +300,15 @@
                                     data-sidebar-channel-icon="channel"
                                     viewBox="0 0 20 20"
                                     class=""
-                                    style="--s: 16px"
-                                  >
+                                    style="--s: 16px">
                                     <path
                                       fill="currentColor"
                                       fill-rule="evenodd"
                                       d="M9.984 4.176a1 1 0 0 0-1.968-.352L7.448 7H4a1 1 0 1 0 0 2h3.091l-.803 4.5H3a1 1 0 1 0 0 2h2.93l-.414 2.324a1 1 0 0 0 1.968.352l.478-2.676h2.719l-.415 2.324a1 1 0 1 0 1.968.352l.478-2.676H16a1 1 0 1 0 0-2h-2.93l.803-4.5H17a1 1 0 1 0 0-2h-2.77l.504-2.824a1 1 0 1 0-1.968-.352L12.198 7H9.48l.504-2.824Zm1.054 9.324L11.84 9H9.123l-.804 4.5h2.719Z"
-                                      clip-rule="evenodd"
-                                    ></path>
+                                      clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name">Mentioned Channel</span>
+                                <span class="name">{interface.mentionedChannel}</span>
                                 <span class="channel_suffix">
                                   <span class="badge">5</span>
                                 </span>
@@ -349,16 +317,12 @@
 
                             <div class="item__contain">
                               <div class="section_heading">
-                                <span class="section_heading_expand_container"
-                                  ><i class="section_heading_expand"></i
-                                ></span>
+                                <span class="section_heading_expand_container"><i class="section_heading_expand"></i></span>
                                 <div class="section_heading_label">
                                   <div class="coachmark_anchor">
                                     <button class="section_heading_button">
                                       <span class="truncate">
-                                        <div class="overflow_ellipsis">
-                                          Direct messages
-                                        </div>
+                                        <div class="overflow_ellipsis">{interface.directMessages}</div>
                                       </span>
                                     </button>
                                   </div>
@@ -372,9 +336,7 @@
                                   <div class="user_avatar">
                                     <span class="avatar">
                                       <span class="width_only_container">
-                                        <img
-                                          src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-slackbot.png"
-                                        />
+                                        <img src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-slackbot.png" />
                                       </span>
                                     </span>
                                   </div>
@@ -391,9 +353,7 @@
                                   <div class="user_avatar">
                                     <span class="avatar">
                                       <span class="width_only_container">
-                                        <img
-                                          src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png"
-                                        />
+                                        <img src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png" />
                                       </span>
                                     </span>
                                     <div class="user_avatar_presence_bg"></div>
@@ -401,7 +361,7 @@
                                     <i class="presence-online"></i>
                                   </div>
                                   <div class="name">
-                                    <span>User</span>
+                                    <span>{interface.user}</span>
                                   </div>
                                 </div>
                               </div>
@@ -417,24 +377,228 @@
                         data-wbq="true"
                         aria-hidden="true"
                         viewBox="0 0 20 20"
-                        class="is-inline"
-                      >
+                        class="is-inline">
                         <path
                           fill="currentColor"
                           fill-rule="evenodd"
                           d="M10.75 3.75a.75.75 0 0 0-1.5 0v10.628l-3.957-4.146a.75.75 0 0 0-1.086 1.036l5.25 5.5a.75.75 0 0 0 1.085 0l5.25-5.5a.75.75 0 0 0-1.085-1.036l-3.957 4.146V3.75Z"
-                          clip-rule="evenodd"
-                        ></path>
+                          clip-rule="evenodd"></path>
                       </svg>
                     </span>
-                    More unreads
+                    {interface.moreUnreadsBadge}
                   </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="content"></div>
+        <div class="content">
+          <div class="primary_view">
+            <div class="primary_view_contents">
+              <div class="container">
+                <div>
+                  <div class="primary_view_body">
+                    <div class="message_pane">
+                      <div>
+                        <div>
+                          <div class="message_list">
+                            <div class="hider">
+                              <div class="child">
+                                <div class="scroll_container theme_list">
+                                  <!-- theme item -->
+                                  <div class="list_item theme_item_template">
+                                    <div class="message">
+                                      <div class="hover">
+                                        <div class="actions">
+                                          <div class="gutter">
+                                            <div class="left">
+                                              <span class="member_profile_hover_card">
+                                                <button class="avatar">
+                                                  <span class="width_only_container">
+                                                    <img
+                                                      class="stc-theme__author__avatar"
+                                                      src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png" />
+                                                  </span>
+                                                </button>
+                                              </span>
+                                            </div>
+                                            <div class="right">
+                                              <div class="sender">
+                                                <span class="member_profile_hover_card">
+                                                  <button class="sender_button stc-theme__author__name">{variable.themeAuthorName}</button>
+                                                </span>
+                                              </div>
+                                              <br />
+                                              <div class="blocks">
+                                                <div class="message_blocks">
+                                                  <div class="renderer">
+                                                    <div class="block_wrapper">
+                                                      <div class="rich_text_block">
+                                                        <div class="rich_text_section">
+                                                          <b class="stc-theme__name">{variable.themeName}</b>
+                                                          <code class="mrkdwn__code stc-theme__tag">{variable.themeTag}</code>
+                                                          <span class="mrkdwn__br"></span>
+                                                        </div>
+                                                        <pre
+                                                          class="mrkdwn__pre stc-theme__code"
+                                                          data-code="">
+{variable.themeCode}</pre
+                                                        >
+                                                      </div>
+                                                    </div>
+                                                    <div class="block_wrapper">
+                                                      <div class="actions_block">
+                                                        <div class="actions_block_elements">
+                                                          <div class="action">
+                                                            <button class="block_kit_button_element button_preview">
+                                                              <div class="plain_text_element"><span>{action.preview}</span></div>
+                                                            </button>
+                                                          </div>
+                                                          <div class="action">
+                                                            <button class="block_kit_button_element button_copy">
+                                                              <div class="plain_text_element"><span>{action.copy}</span></div>
+                                                            </button>
+                                                          </div>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <!-- theme item -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="primary_view_footer">
+                    <div class="primary_view_footer_inner">
+                      <div class="message_pane_input">
+                        <div class="message_pane_input_inner">
+                          <div class="message_pane_input_inner_main">
+                            <div class="input">
+                              <div class="input_container_unstyled">
+                                <div class="body">
+                                  <div class="container">
+                                    <div class="texty_input_unstyled">
+                                      <div class="editor">
+                                        <input
+                                          type="text"
+                                          class="editor_input"
+                                          id="editor_input" />
+                                      </div>
+                                      <div class="placeholder">
+                                        <div class="placeholder">{interface.writeThemeCode}</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="footer">
+                                    <div class="prefix">
+                                      <div>
+                                        <div class="shortcuts_menu_trigger_button_container">
+                                          <div class="composer_ia_icon_button">
+                                            <button class="button">
+                                              <svg
+                                                width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24"
+                                                fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                  fill-rule="evenodd"
+                                                  clip-rule="evenodd"
+                                                  d="M2 8V16C2 16.5523 2.44772 17 3 17H16.6202C16.9121 17 17.1895 16.8724 17.3795 16.6508L20.808 12.6508C21.129 12.2763 21.129 11.7237 20.808 11.3492L17.3795 7.34921C17.1895 7.12756 16.9121 7 16.6202 7H3C2.44772 7 2 7.44772 2 8ZM0 8V16C0 17.6569 1.34315 19 3 19H16.6202C17.496 19 18.328 18.6173 18.898 17.9524L22.3265 13.9524C23.2895 12.8289 23.2895 11.1711 22.3265 10.0476L18.898 6.04763C18.328 5.38269 17.496 5 16.6202 5H3C1.34315 5 0 6.34315 0 8Z"
+                                                  fill="currentColor" />
+                                                <path
+                                                  fill-rule="evenodd"
+                                                  clip-rule="evenodd"
+                                                  d="M15 13C15.5523 13 16 12.5523 16 12C16 11.4477 15.5523 11 15 11C14.4477 11 14 11.4477 14 12C14 12.5523 14.4477 13 15 13ZM15 15C16.6569 15 18 13.6569 18 12C18 10.3431 16.6569 9 15 9C13.3431 9 12 10.3431 12 12C12 13.6569 13.3431 15 15 15Z"
+                                                  fill="currentColor" />
+                                              </svg>
+                                            </button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="toolbar_buttons">
+                                      <div class="texty_buttons">
+                                        <button class="button color-scheme light">
+                                          <div class="light">
+                                            <svg
+                                              width="24"
+                                              height="24"
+                                              viewBox="0 0 24 24"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg">
+                                              <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16ZM12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z"
+                                                fill="currentColor" />
+                                              <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M11 0H13V4.06189C12.6724 4.02104 12.3387 4 12 4C11.6613 4 11.3276 4.02104 11 4.06189V0ZM7.0943 5.68018L4.22173 2.80761L2.80752 4.22183L5.6801 7.09441C6.09071 6.56618 6.56608 6.0908 7.0943 5.68018ZM4.06189 11H0V13H4.06189C4.02104 12.6724 4 12.3387 4 12C4 11.6613 4.02104 11.3276 4.06189 11ZM5.6801 16.9056L2.80751 19.7782L4.22173 21.1924L7.0943 18.3198C6.56608 17.9092 6.09071 17.4338 5.6801 16.9056ZM11 19.9381V24H13V19.9381C12.6724 19.979 12.3387 20 12 20C11.6613 20 11.3276 19.979 11 19.9381ZM16.9056 18.3199L19.7781 21.1924L21.1923 19.7782L18.3198 16.9057C17.9092 17.4339 17.4338 17.9093 16.9056 18.3199ZM19.9381 13H24V11H19.9381C19.979 11.3276 20 11.6613 20 12C20 12.3387 19.979 12.6724 19.9381 13ZM18.3198 7.0943L21.1923 4.22183L19.7781 2.80762L16.9056 5.6801C17.4338 6.09071 17.9092 6.56608 18.3198 7.0943Z"
+                                                fill="currentColor" />
+                                            </svg>
+                                          </div>
+                                          <div class="dark">
+                                            <svg
+                                              width="24"
+                                              height="24"
+                                              viewBox="0 0 24 24"
+                                              fill="none"
+                                              xmlns="http://www.w3.org/2000/svg">
+                                              <path
+                                                fill-rule="evenodd"
+                                                clip-rule="evenodd"
+                                                d="M12.2256 2.00253C9.59172 1.94346 6.93894 2.9189 4.92893 4.92891C1.02369 8.83415 1.02369 15.1658 4.92893 19.071C8.83418 22.9763 15.1658 22.9763 19.0711 19.071C21.0811 17.061 22.0565 14.4082 21.9975 11.7743C21.9796 10.9772 21.8669 10.1818 21.6595 9.40643C21.0933 9.9488 20.5078 10.4276 19.9163 10.8425C18.5649 11.7906 17.1826 12.4053 15.9301 12.6837C14.0241 13.1072 12.7156 12.7156 12 12C11.2844 11.2844 10.8928 9.97588 11.3163 8.0699C11.5947 6.81738 12.2094 5.43511 13.1575 4.08368C13.5724 3.49221 14.0512 2.90664 14.5935 2.34046C13.8182 2.13305 13.0228 2.02041 12.2256 2.00253ZM17.6569 17.6568C18.9081 16.4056 19.6582 14.8431 19.9072 13.2186C16.3611 15.2643 12.638 15.4664 10.5858 13.4142C8.53361 11.362 8.73568 7.63895 10.7814 4.09281C9.1569 4.34184 7.59434 5.09193 6.34315 6.34313C3.21895 9.46732 3.21895 14.5326 6.34315 17.6568C9.46734 20.781 14.5327 20.781 17.6569 17.6568Z"
+                                                fill="currentColor" />
+                                            </svg>
+                                          </div>
+                                        </button>
+                                        <button class="button random">
+                                          <svg
+                                            width="24"
+                                            height="24"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                              d="M18.3701 7.99993L13.8701 10.598V8.99993H6.88989V12.9999H4.88989V6.99993H13.8701V5.40186L18.3701 7.99993Z"
+                                              fill="currentColor" />
+                                            <path
+                                              d="M10.1299 16.9999H19.1101V10.9999H17.1101V14.9999H10.1299V13.4019L5.62988 15.9999L10.1299 18.598V16.9999Z"
+                                              fill="currentColor" />
+                                          </svg>
+                                        </button>
+                                        <button class="button"></button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="notification_bar"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script src="./script.js"></script>
