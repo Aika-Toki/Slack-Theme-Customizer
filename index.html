@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/og.png" />
+    <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0" />
     <title>Slack Theme Customizer</title>
@@ -18,15 +21,35 @@
       href="./style.css" />
   </head>
   <body>
-    <div id="modal">
-      <div class="search-modal">
-        <div>
-          <label>
-            Title:
+    <div
+      id="search-modal"
+      class="modal">
+      <div class="box">
+        <div class="field">
+          <p class="control block">
             <input
               type="text"
-              id="search__q" />
-          </label>
+              id="search__q"
+              class="input"
+              placeholder="Search Theme Name" />
+          </p>
+          <p class="control block">
+            <input
+              type="text"
+              id="search__qt"
+              class="input"
+              placeholder="Search Tags ―― separated by spaces" />
+          </p>
+          <button
+            class="button is-primary"
+            id="button_search">
+            Search
+          </button>
+          <button
+            class="button is-danger"
+            id="button_clearSearch">
+            Clear
+          </button>
         </div>
       </div>
     </div>
@@ -83,18 +106,24 @@
                   clip-rule="evenodd"></path>
               </svg>
             </div>
-            <span class="text">{interface.search}</span>
+            <span
+              class="text"
+              id="search_keyword"
+              >{interface.search}</span
+            >
           </button>
           <button class="filters">
             <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              xmlns="http://www.w3.org/2000/svg">
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6">
               <path
-                d="M13.1459 11.0499L12.9716 9.05752L15.3462 8.84977C14.4471 7.98322 13.2242 7.4503 11.8769 7.4503C9.11547 7.4503 6.87689 9.68888 6.87689 12.4503C6.87689 15.2117 9.11547 17.4503 11.8769 17.4503C13.6977 17.4503 15.2911 16.4771 16.1654 15.0224L18.1682 15.5231C17.0301 17.8487 14.6405 19.4503 11.8769 19.4503C8.0109 19.4503 4.87689 16.3163 4.87689 12.4503C4.87689 8.58431 8.0109 5.4503 11.8769 5.4503C13.8233 5.4503 15.5842 6.24474 16.853 7.52706L16.6078 4.72412L18.6002 4.5498L19.1231 10.527L13.1459 11.0499Z"
-                fill="currentColor" />
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
             </svg>
           </button>
         </div>
@@ -126,8 +155,7 @@
               <div class="user">
                 <span class="avatar">
                   <span class="width_only_container">
-                    <img
-                      src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png" />
+                    <img src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png" />
                   </span>
                 </span>
                 <i class="presence--stroke"></i>
@@ -201,17 +229,11 @@
                           <div class="scroll_container">
                             <div class="item__contain">
                               <div class="section_heading">
-                                <span class="section_heading_expand_container"
-                                  ><i class="section_heading_expand"></i
-                                ></span>
+                                <span class="section_heading_expand_container"><i class="section_heading_expand"></i></span>
                                 <div class="section_heading_label">
                                   <div class="coachmark_anchor">
                                     <button class="section_heading_button">
-                                      <span class="truncate"
-                                        ><div class="overflow_ellipsis">
-                                          {interface.channelSection}
-                                        </div></span
-                                      >
+                                      <span class="truncate"><div class="overflow_ellipsis">{interface.channelSection}</div></span>
                                     </button>
                                   </div>
                                 </div>
@@ -259,9 +281,7 @@
                                       clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name"
-                                  >{interface.selectedChannel}</span
-                                >
+                                <span class="name">{interface.selectedChannel}</span>
                                 <span class="channel_suffix"></span>
                               </div>
                             </div>
@@ -284,9 +304,7 @@
                                       clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name"
-                                  >{interface.hoveredChannel}</span
-                                >
+                                <span class="name">{interface.hoveredChannel}</span>
                                 <span class="channel_suffix"></span>
                               </div>
                             </div>
@@ -309,9 +327,7 @@
                                       clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name"
-                                  >{interface.unreadChannel}</span
-                                >
+                                <span class="name">{interface.unreadChannel}</span>
                                 <span class="channel_suffix"></span>
                               </div>
                             </div>
@@ -334,9 +350,7 @@
                                       clip-rule="evenodd"></path>
                                   </svg>
                                 </div>
-                                <span class="name"
-                                  >{interface.mentionedChannel}</span
-                                >
+                                <span class="name">{interface.mentionedChannel}</span>
                                 <span class="channel_suffix">
                                   <span class="badge">5</span>
                                 </span>
@@ -345,16 +359,12 @@
 
                             <div class="item__contain">
                               <div class="section_heading">
-                                <span class="section_heading_expand_container"
-                                  ><i class="section_heading_expand"></i
-                                ></span>
+                                <span class="section_heading_expand_container"><i class="section_heading_expand"></i></span>
                                 <div class="section_heading_label">
                                   <div class="coachmark_anchor">
                                     <button class="section_heading_button">
                                       <span class="truncate">
-                                        <div class="overflow_ellipsis">
-                                          {interface.directMessages}
-                                        </div>
+                                        <div class="overflow_ellipsis">{interface.directMessages}</div>
                                       </span>
                                     </button>
                                   </div>
@@ -368,8 +378,7 @@
                                   <div class="user_avatar">
                                     <span class="avatar">
                                       <span class="width_only_container">
-                                        <img
-                                          src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-slackbot.png" />
+                                        <img src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-slackbot.png" />
                                       </span>
                                     </span>
                                   </div>
@@ -386,8 +395,7 @@
                                   <div class="user_avatar">
                                     <span class="avatar">
                                       <span class="width_only_container">
-                                        <img
-                                          src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png" />
+                                        <img src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png" />
                                       </span>
                                     </span>
                                     <div class="user_avatar_presence_bg"></div>
@@ -452,11 +460,9 @@
                                         <div class="actions">
                                           <div class="gutter">
                                             <div class="left">
-                                              <span
-                                                class="member_profile_hover_card">
+                                              <span class="member_profile_hover_card">
                                                 <button class="avatar">
-                                                  <span
-                                                    class="width_only_container">
+                                                  <span class="width_only_container">
                                                     <img
                                                       class="stc-theme__author__avatar"
                                                       src="https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/a-user.png" />
@@ -466,12 +472,8 @@
                                             </div>
                                             <div class="right">
                                               <div class="sender">
-                                                <span
-                                                  class="member_profile_hover_card">
-                                                  <button
-                                                    class="sender_button stc-theme__author__name">
-                                                    {variable.themeAuthorName}
-                                                  </button>
+                                                <span class="member_profile_hover_card">
+                                                  <button class="sender_button stc-theme__author__name">{variable.themeAuthorName}</button>
                                                 </span>
                                               </div>
                                               <br />
@@ -479,20 +481,11 @@
                                                 <div class="message_blocks">
                                                   <div class="renderer">
                                                     <div class="block_wrapper">
-                                                      <div
-                                                        class="rich_text_block">
-                                                        <div
-                                                          class="rich_text_section">
-                                                          <b
-                                                            class="stc-theme__name"
-                                                            >{variable.themeName}</b
-                                                          >
-                                                          <code
-                                                            class="mrkdwn__code stc-theme__tag"
-                                                            >{variable.themeTag}</code
-                                                          >
-                                                          <span
-                                                            class="mrkdwn__br"></span>
+                                                      <div class="rich_text_block">
+                                                        <div class="rich_text_section">
+                                                          <b class="stc-theme__name">{variable.themeName}</b>
+                                                          <code class="mrkdwn__code stc-theme__tag">{variable.themeTag}</code>
+                                                          <span class="mrkdwn__br"></span>
                                                         </div>
                                                         <pre
                                                           class="mrkdwn__pre stc-theme__code"
@@ -502,29 +495,19 @@
                                                       </div>
                                                     </div>
                                                     <div class="block_wrapper">
-                                                      <div
-                                                        class="actions_block">
-                                                        <div
-                                                          class="actions_block_elements">
+                                                      <div class="actions_block">
+                                                        <div class="actions_block_elements">
                                                           <div class="action">
-                                                            <button
-                                                              class="block_kit_button_element button_preview">
-                                                              <div
-                                                                class="plain_text_element">
-                                                                <span
-                                                                  >{action.preview}</span
-                                                                >
+                                                            <button class="block_kit_button_element button_preview">
+                                                              <div class="plain_text_element">
+                                                                <span>{action.preview}</span>
                                                               </div>
                                                             </button>
                                                           </div>
                                                           <div class="action">
-                                                            <button
-                                                              class="block_kit_button_element button_copy">
-                                                              <div
-                                                                class="plain_text_element">
-                                                                <span
-                                                                  >{action.copy}</span
-                                                                >
+                                                            <button class="block_kit_button_element button_copy">
+                                                              <div class="plain_text_element">
+                                                                <span>{action.copy}</span>
                                                               </div>
                                                             </button>
                                                           </div>
@@ -560,23 +543,24 @@
                                   <div class="_container">
                                     <div class="texty_input_unstyled">
                                       <div class="editor">
-                                        <input
-                                          type="text"
-                                          class="editor_input"
-                                          id="editor_input" />
+                                        <label class="editor_input_preview">
+                                          <p class="editor_input_preview_inner"></p>
+                                          <input
+                                            type="text"
+                                            class="editor_input"
+                                            id="editor_input"
+                                            value="#3F0E40,#000000,#1164A3,#FFFFFF,#4D2A51,#FFFFFF,#2BAC76,#CD2553,#350d36,#FFFFFF" />
+                                        </label>
                                       </div>
                                       <div class="placeholder">
-                                        <div class="placeholder">
-                                          {interface.writeThemeCode}
-                                        </div>
+                                        <div class="placeholder hidden">{interface.writeThemeCode}</div>
                                       </div>
                                     </div>
                                   </div>
                                   <div class="footer">
-                                    <div class="prefix">
+                                    <!-- <div class="prefix">
                                       <div>
-                                        <div
-                                          class="shortcuts_menu_trigger_button_container">
+                                        <div class="shortcuts_menu_trigger_button_container">
                                           <div class="composer_ia_icon_button">
                                             <button class="_button">
                                               <svg
@@ -600,11 +584,10 @@
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
+                                    </div> -->
                                     <div class="toolbar_buttons">
                                       <div class="texty_buttons">
-                                        <button
-                                          class="_button color-scheme light">
+                                        <button class="_button button_color-scheme light">
                                           <div class="light">
                                             <svg
                                               width="24"
@@ -639,7 +622,7 @@
                                             </svg>
                                           </div>
                                         </button>
-                                        <button class="_button random">
+                                        <button class="_button button_random">
                                           <svg
                                             width="24"
                                             height="24"
@@ -654,7 +637,15 @@
                                               fill="currentColor" />
                                           </svg>
                                         </button>
-                                        <button class="_button"></button>
+                                        <button class="_button button_materialize">
+                                          <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 24 24">
+                                            <path
+                                              d="M21,12C21,9.97 20.33,8.09 19,6.38V17.63C20.33,15.97 21,14.09 21,12M17.63,19H6.38C7.06,19.55 7.95,20 9.05,20.41C10.14,20.8 11.13,21 12,21C12.88,21 13.86,20.8 14.95,20.41C16.05,20 16.94,19.55 17.63,19M11,17L7,9V17H11M17,9L13,17H17V9M12,14.53L15.75,7H8.25L12,14.53M17.63,5C15.97,3.67 14.09,3 12,3C9.91,3 8.03,3.67 6.38,5H17.63M5,17.63V6.38C3.67,8.09 3,9.97 3,12C3,14.09 3.67,15.97 5,17.63M23,12C23,15.03 21.94,17.63 19.78,19.78C17.63,21.94 15.03,23 12,23C8.97,23 6.38,21.94 4.22,19.78C2.06,17.63 1,15.03 1,12C1,8.97 2.06,6.38 4.22,4.22C6.38,2.06 8.97,1 12,1C15.03,1 17.63,2.06 19.78,4.22C21.94,6.38 23,8.97 23,12Z"
+                                              fill="currentColor" />
+                                          </svg>
+                                        </button>
                                       </div>
                                     </div>
                                   </div>
@@ -676,6 +667,6 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/marcelodolza/iziModal@1.6.1/js/iziModal.min.js"></script>
-    <script src="./script.js"></script>
+    <script src="./dist/bundle.js"></script>
   </body>
 </html>

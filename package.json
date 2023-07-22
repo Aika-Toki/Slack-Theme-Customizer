@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@material/material-color-utilities": "^0.2.7",
+    "chroma-js": "^2.4.2",
+    "webpack": "^5.88.2"
+  },
+  "name": "slack-theme-customizer",
+  "description": "",
+  "version": "1.0.0",
+  "main": "script.js",
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --mode development --watch"
+  },
+  "author": "",
+  "license": "ISC"
+}
