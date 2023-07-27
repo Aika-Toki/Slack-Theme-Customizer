@@ -237,7 +237,7 @@ function clearSearch() {
 }
 function checkContrastRatio(colorstr) {
   let colors = colorstr.split(",");
-  let point = 0;
+  let score = [];
   [
     [colors[0], colors[5]],
     [colors[4], colors[5]],
@@ -247,21 +247,23 @@ function checkContrastRatio(colorstr) {
   ].forEach((e) => {
     let contrastRatio = chroma.contrast(e[0], e[1]);
     if (contrastRatio >= 7.0) {
-      point += 2;
+      score.push("AAA");
     } else if (contrastRatio >= 4.5) {
-      point++;
+      score.push("AA");
     }
   });
   let resultClass = ["accessibility-great", "accessibility-good", "accessibility-bad"];
-  if (point >= 7) {
-    resultClass = resultClass[0];
-  } else if (point >= 4) {
-    resultClass = resultClass[1];
+  if (score.length == 5) {
+    if (score.includes("AAA")) {
+      resultClass = resultClass[0];
+    } else {
+      resultClass = resultClass[1];
+    }
   } else {
     resultClass = resultClass[2];
   }
-  console.log(`${resultClass} (${point})`);
-  return `${resultClass} (${point})`;
+  console.log(`${resultClass} (${score})`);
+  return resultClass;
 }
 setLangText();
 editorPreview();
