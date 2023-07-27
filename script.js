@@ -252,7 +252,7 @@ function checkContrastRatio(colorstr) {
       score.push("AA");
     }
   });
-  let resultClass = ["accessibility-great", "accessibility-good", "accessibility-bad"];
+  let resultClass = ["accessibility-s", "accessibility-a", "accessibility-b"];
   if (score.length == 5) {
     if (score.includes("AAA")) {
       resultClass = resultClass[0];
