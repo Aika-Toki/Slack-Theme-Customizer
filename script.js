@@ -77,7 +77,7 @@ function generateColor() {
   return result.join("");
 }
 function getColorScheme(colorstr) {
-  console.info(colorstr);
+  console.debug(colorstr);
   let _default = "#3F0E40,#000000,#1164A3,#FFFFFF,#4D2A51,#FFFFFF,#2BAC76,#CD2553,#350d36,#FFFFFF";
   let result = [];
   let property = ["sidebar-bg", "sidebar-item-bg-select", "sidebar-item-fg-select", "sidebar-item-bg-hover", "sidebar-item-fg", "active-badge", "mention-badge", "topnav-bg", "topnav-fg"];
@@ -89,7 +89,7 @@ function getColorScheme(colorstr) {
     document.querySelector(":root").style.setProperty(`--${property[i]}`, result[i]);
     let a = result[i].substr(1, 6).match(/.{2}/g);
     a = a.map((e) => parseInt(e, 16));
-    // console.info(a);
+    // console.debug(a);
     document.querySelector(":root").style.setProperty(`--${property[i]}-rgb`, a.join(", "));
   }
   // document.body.innerHTML =
@@ -134,7 +134,7 @@ function get(q, qt) {
   fetch(uri)
     .then((r) => r.json())
     .then((data) => {
-      // console.info(data);
+      // console.debug(data);
       if (data.status == true) {
         setData(data.content);
         document.querySelector(".loading").classList.add("hidden");
@@ -161,14 +161,14 @@ function post(title, tag, code, author) {
   let uri = "https://script.google.com/macros/s/AKfycbxUEOZJsoVz3z1znXUYiBVhG7ZYy-kBFXLyUn6XGnjaCfTjDlubh-rgVJS6pIXtS-_p/exec";
   if (document.querySelector(".loading").classList.contains("hidden")) document.querySelector(".loading").classList.remove("hidden");
   if (!document.querySelector(".filters").classList.contains("loader")) document.querySelector(".filters").classList.add("loader");
-  console.info(uri);
+  console.debug(uri);
   fetch(uri, {
     method: "POST",
     body: format,
   })
     .then((r) => r.json())
     .then((data) => {
-      console.info(data);
+      console.debug(data);
       if (data.status == true) {
         refresh();
       } else {
@@ -324,8 +324,8 @@ function checkAccessibility(colorstr) {
   } else {
     resultClass = resultClass[2];
   }
-  console.info(`${resultClass} (${score})`);
-  console.info(details);
+  console.debug(`${resultClass} (${score})`);
+  console.debug(details);
   let unavailableElementstr = unavailableElement.length != 0 ? unavailableElement.join(", ") : "None";
   return [resultClass, unavailableElementstr];
 }
