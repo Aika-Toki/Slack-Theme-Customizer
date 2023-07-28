@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;900&family=Syne+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap");
 @font-face {
   font-family: Slack v2;
   font-style: normal;
@@ -141,7 +141,6 @@ body {
   background-color: #333;
   margin: 0;
   overflow: hidden;
-  font-family: "Noto Sans JP", sans-serif;
   color: rgba(var(--sk_primary_foreground, 29, 28, 29), 1);
 }
 
@@ -149,8 +148,9 @@ body {
 :after,
 :before {
   box-sizing: border-box;
-  transition-property: background, color;
   transition: 50ms 0ms linear;
+  transition-property: background, color;
+  font-family: "Noto Sans JP", sans-serif;
 }
 
 .iziModal {
@@ -1545,6 +1545,13 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   white-space: pre-wrap;
   word-break: normal;
   color: rgba(var(--sk_code, 224, 30, 90), 1);
+  margin-left: 3px;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_body > .message_pane > div > div > .message_list > .hider > .child > .scroll_container > .list_item > .message > .hover > .actions > .gutter > .right > .blocks > .message_blocks > .renderer > .block_wrapper > .rich_text_block > .rich_text_section > .stc-theme__accessibility-badge {
+  display: inline-block;
+  vertical-align: middle;
+  height: 20px;
+  margin-left: 5px;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_body > .message_pane > div > div > .message_list > .hider > .child > .scroll_container > .list_item > .message > .hover > .actions > .gutter > .right > .blocks > .message_blocks > .renderer > .block_wrapper > .rich_text_block > .rich_text_section > .mrkdwn__br {
   display: block;
@@ -1622,7 +1629,6 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   background-clip: padding-box;
   border: 1px solid var(--saf-0);
   font-weight: 700;
-  transition: all 80ms linear;
   color: rgba(var(--sk_primary_foreground, 29, 28, 29), 1);
   font-size: 13px;
   height: 28px;
@@ -1651,9 +1657,6 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   z-index: 200;
   box-shadow: 8px -5px 10px 3px rgba(var(--sk_primary_background, 255, 255, 255), 0.8);
 }
-div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner {
-  transition: height 0.16s cubic-bezier(0.36, 0.19, 0.29, 1);
-}
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input {
   display: flex;
   flex: 1;
@@ -1670,7 +1673,7 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   position: relative;
   background-color: rgba(var(--sk_foreground_min_solid, 248, 248, 248), 1);
   border-color: #565856;
-  font-family: "Noto Sans JP", Slack-Lato, Slack-Fractions, appleLogo, sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
   border-radius: 8px;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body {
@@ -1686,11 +1689,9 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   grid-area: input;
   position: relative;
   z-index: 1;
-  transition: box-shadow 80ms linear;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > ._container > .texty_input_unstyled {
   box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
   height: auto;
   margin: 0;
@@ -1698,7 +1699,7 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   display: flex;
   flex-grow: 1;
   min-width: 0;
-  font-family: "Noto Sans JP", Slack-Lato, Slack-Fractions, appleLogo, sans-serif;
+  font-family: "Noto Sans JP", sans-serif;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > ._container > .texty_input_unstyled > .editor {
   word-wrap: break-word;
@@ -1802,7 +1803,6 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   border-top: 1px solid rgba(0, 0, 0, 0);
   display: flex;
   justify-content: space-between;
-  transition: background 80ms, border-color 80ms;
   background-color: initial;
   border-top: unset;
   cursor: text;
@@ -1852,7 +1852,6 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   height: 24px;
   position: relative;
   transform-origin: center center;
-  transition: background 80ms, transform 80ms;
   width: 24px;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .prefix > div > .shortcuts_menu_trigger_button_container > .composer_ia_icon_button > ._button::before {
@@ -1900,7 +1899,6 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   display: inline-flex;
   justify-content: center;
   position: relative;
-  transition: background 80ms, border-color 80ms, color 80ms;
   position: relative;
   z-index: 1;
   color: rgba(var(--sk_foreground_max, 29, 28, 29), 0.7);

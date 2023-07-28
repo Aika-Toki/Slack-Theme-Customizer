@@ -153,6 +153,7 @@ function setData(data) {
       n.innerHTML = n.innerHTML.replace("{variable.themeName}", d.title);
       n.innerHTML = n.innerHTML.replace("{variable.themeCode}", d.code);
       n.innerHTML = n.innerHTML.replace("{variable.themeTag}", d.tag.join(", "));
+      n.querySelector(".stc-theme__tag").outerHTML += accessibilityBadge(checkAccessibility(d.code));
       n.querySelector(".stc-theme__code").innerHTML = addColorPreviews(n.querySelector(".stc-theme__code").textContent);
       n.querySelector(".stc-theme__code").setAttribute("data-code", d.code);
       n.querySelector(".stc-theme__author__avatar").style.filter = "hue-rotate(" + Math.floor(Math.random() * 36) + "0deg)";
@@ -192,7 +193,7 @@ function editorPreview() {
   document.querySelector(".editor_input_preview_inner").innerHTML = preview;
   document.querySelector(".editor_input").setAttribute("data-clear-code", document.querySelector(".editor_input").value);
   document.querySelector(".editor_input").value = "";
-  checkContrastRatio(cache);
+  checkAccessibility(cache);
   getColorScheme(cache);
 }
 function editorFix() {
@@ -202,7 +203,7 @@ function editorFix() {
 }
 function preview(e) {
   getColorScheme(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
-  checkContrastRatio(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
+  checkAccessibility(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
 }
 function copy(e) {
   navigator.clipboard.writeText(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
@@ -235,26 +236,27 @@ function clearSearch() {
   document.querySelector("#search__qt").value = "";
   search();
 }
-function checkContrastRatio(colorstr) {
+function checkAccessibility(colorstr) {
   let colors = colorstr.split(",");
   let score = [];
-  [
+  let element = [
     [colors[0], colors[5]],
     [colors[4], colors[5]],
     [colors[2], colors[3]],
     [colors[7], "#ffffff"],
     [colors[8], colors[9]],
-  ].forEach((e) => {
+  ];
+  element.forEach((e) => {
     let contrastRatio = chroma.contrast(e[0], e[1]);
     if (contrastRatio >= 7.0) {
-      score.push("AAA");
+      score.push("S");
     } else if (contrastRatio >= 4.5) {
-      score.push("AA");
+      score.push("A");
     }
   });
-  let resultClass = ["accessibility-s", "accessibility-a", "accessibility-b"];
-  if (score.length == 5) {
-    if (score.includes("AAA")) {
+  let resultClass = ["s", "a", "-"];
+  if (score.length == element.length) {
+    if (score.includes("S")) {
       resultClass = resultClass[0];
     } else {
       resultClass = resultClass[1];
@@ -264,6 +266,18 @@ function checkContrastRatio(colorstr) {
   }
   console.log(`${resultClass} (${score})`);
   return resultClass;
+}
+function accessibilityBadge(score) {
+  let url = "";
+  if (score == "s") {
+    url = "https://img.shields.io/badge/Accessibility-Class--S-009dc4?style=flat";
+  } else if (score == "a") {
+    url = "https://img.shields.io/badge/Accessibility-Class--A-48a34f?style=for-the-badge";
+  } else {
+    url = "https://img.shields.io/badge/Accessibility----CCCCCC?style=flat";
+  }
+  let tag = `<img class="stc-theme__accessibility-badge" src="${url}">`;
+  return tag;
 }
 setLangText();
 editorPreview();
