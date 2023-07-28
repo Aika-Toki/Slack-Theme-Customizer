@@ -148,8 +148,7 @@ body {
 :after,
 :before {
   box-sizing: border-box;
-  transition: 50ms 0ms linear;
-  transition-property: background, color;
+  transition: color 80ms 0ms linear, background 200ms 0ms linear;
   font-family: "Noto Sans JP", sans-serif;
 }
 
@@ -351,6 +350,7 @@ div#preview > .top_nav > .search__container > .search > .icon > svg {
   width: 1em;
 }
 div#preview > .top_nav > .search__container > .search > .text {
+  transition-delay: 0ms;
   display: block;
   font-size: 13px;
   font-weight: 400;
@@ -365,6 +365,7 @@ div#preview > .top_nav > .search__container > .search > .text {
   padding-left: 8px;
 }
 div#preview > .top_nav > .search__container > .filters {
+  transition-delay: 0ms;
   background: none;
   border: 0;
   color: inherit;
@@ -417,6 +418,7 @@ div#preview > .top_nav > .right > .coachmark-anchor {
   position: relative;
 }
 div#preview > .top_nav > .right > .coachmark-anchor > .user__button {
+  transition-delay: 0ms;
   background: none;
   border: 0;
   color: inherit;
@@ -583,6 +585,7 @@ div#preview > .wrapper > .sidebar {
 div#preview > .wrapper > .sidebar > .header {
   color: var(--sidebar-item-fg);
   background-color: var(--sidebar-bg);
+  transition-delay: 0ms;
   display: flex;
   align-items: stretch;
   font-size: 18px;
@@ -594,6 +597,7 @@ div#preview > .wrapper > .sidebar > .header {
 }
 div#preview > .wrapper > .sidebar > .header > ._button {
   align-items: center;
+  transition-delay: 0ms;
   background-clip: padding-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1019607843);
   display: flex;
@@ -617,6 +621,7 @@ div#preview > .wrapper > .sidebar > .header > ._button > .info {
 div#preview > .wrapper > .sidebar > .header > ._button > .info > .team_name {
   align-items: center;
   border-radius: 6px;
+  transition-delay: 0ms;
   display: flex;
   margin-left: -4px;
   max-width: 100%;
@@ -637,6 +642,7 @@ div#preview > .wrapper > .sidebar > .header > ._button > .info > .team_name > .t
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition-delay: 0ms;
   white-space: nowrap;
 }
 div#preview > .wrapper > .sidebar > .header > ._button > .info > .team_name > .menu_icon {
@@ -644,6 +650,7 @@ div#preview > .wrapper > .sidebar > .header > ._button > .info > .team_name > .m
   width: 20px;
 }
 div#preview > .wrapper > .sidebar > .header > ._button > .info > .team_name > .menu_icon > svg {
+  transition-delay: 0ms;
   display: block;
   flex-shrink: 0;
   font-size: var(--s, inherit);
@@ -929,6 +936,7 @@ div#preview > .wrapper > .sidebar > .group > .classic_nav > .list > div > div > 
   padding-right: 8px;
   text-align: left;
   white-space: nowrap;
+  transition-delay: 0ms;
   font-weight: 500;
   display: flex;
 }
@@ -1099,6 +1107,7 @@ div#preview > .wrapper > .sidebar > .group > .classic_nav > .list > div > div > 
   opacity: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+  transition-delay: 0ms;
   white-space: nowrap;
 }
 div#preview > .wrapper > .sidebar > .group > .classic_nav > .list > div > div > .virtual_list > .hider > .child > .scroll_container > .item__row_container > .channel {

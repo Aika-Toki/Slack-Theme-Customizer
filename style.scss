@@ -149,8 +149,7 @@ body {
 :after,
 :before {
   box-sizing: border-box;
-  transition: 50ms 0ms linear;
-  transition-property: background, color;
+  transition: color 80ms 0ms linear, background 200ms 0ms linear;
   font-family: "Noto Sans JP", sans-serif;
 }
 .iziModal {
@@ -350,6 +349,7 @@ div#preview {
           }
         }
         & > .text {
+          transition-delay: 0ms;
           display: block;
           font-size: 13px;
           font-weight: 400;
@@ -369,6 +369,7 @@ div#preview {
           pointer-events: none;
           animation: spinning cubic-bezier(0.68, -0.55, 0.27, 1.55) 2s infinite;
         }
+        transition-delay: 0ms;
         background: none;
         border: 0;
         color: inherit;
@@ -416,6 +417,7 @@ div#preview {
       & > .coachmark-anchor {
         position: relative;
         & > .user__button {
+          transition-delay: 0ms;
           background: none;
           border: 0;
           color: inherit;
@@ -585,6 +587,7 @@ div#preview {
       & > .header {
         color: var(--sidebar-item-fg);
         background-color: var(--sidebar-bg);
+        transition-delay: 0ms;
         display: flex;
         align-items: stretch;
         font-size: 18px;
@@ -595,6 +598,7 @@ div#preview {
         position: relative;
         & > ._button {
           align-items: center;
+          transition-delay: 0ms;
           background-clip: padding-box;
           border-bottom: 1px solid #0000001a;
           display: flex;
@@ -616,6 +620,7 @@ div#preview {
             & > .team_name {
               align-items: center;
               border-radius: 6px;
+              transition-delay: 0ms;
               display: flex;
               margin-left: -4px;
               max-width: 100%;
@@ -635,12 +640,14 @@ div#preview {
                 min-width: 0;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                transition-delay: 0ms;
                 white-space: nowrap;
               }
               & > .menu_icon {
                 flex-shrink: 0;
                 width: 20px;
                 & > svg {
+                  transition-delay: 0ms;
                   display: block;
                   flex-shrink: 0;
                   font-size: var(--s, inherit);
@@ -920,6 +927,7 @@ div#preview {
                             padding-right: 8px;
                             text-align: left;
                             white-space: nowrap;
+                            transition-delay: 0ms;
                             font-weight: 500;
                             display: flex;
                             & > .coachmark_anchor {
@@ -1089,6 +1097,7 @@ div#preview {
                               opacity: 1;
                               overflow: hidden;
                               text-overflow: ellipsis;
+                              transition-delay: 0ms;
                               white-space: nowrap;
                             }
                           }
