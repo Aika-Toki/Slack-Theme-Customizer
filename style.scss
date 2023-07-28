@@ -151,6 +151,8 @@ body {
   box-sizing: border-box;
   transition: color 80ms 0ms linear, background 80ms 0ms linear;
   font-family: "Noto Sans JP", sans-serif;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 .iziModal {
   background: transparent;
@@ -1551,6 +1553,8 @@ div#preview {
                                                         vertical-align: middle;
                                                         height: 20px;
                                                         margin-left: 5px;
+                                                        user-select: none;
+                                                        -webkit-user-drag: none;
                                                       }
                                                       & > .mrkdwn__br {
                                                         display: block;

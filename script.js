@@ -152,7 +152,7 @@ function setData(data) {
       n.innerHTML = n.innerHTML.replace("{variable.themeAuthorName}", d.author);
       n.innerHTML = n.innerHTML.replace("{variable.themeName}", d.title);
       n.innerHTML = n.innerHTML.replace("{variable.themeCode}", d.code);
-      n.innerHTML = n.innerHTML.replace("{variable.themeTag}", d.tag.join(", "));
+      n.innerHTML = n.innerHTML.replace("{variable.themeTag}", d.tag.map((_e) => capitalize(_e)).join(", "));
       n.querySelector(".stc-theme__tag").outerHTML += accessibilityBadge(checkAccessibility(d.code));
       n.querySelector(".stc-theme__code").innerHTML = addColorPreviews(n.querySelector(".stc-theme__code").textContent);
       n.querySelector(".stc-theme__code").setAttribute("data-code", d.code);
@@ -280,6 +280,10 @@ function accessibilityBadge(score) {
   }
   let tag = `<img class="stc-theme__accessibility-badge" src="${url}">`;
   return tag;
+}
+function capitalize(str) {
+  if (typeof str !== "string" || !str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 setLangText();
 editorPreview();

@@ -150,6 +150,10 @@ body {
   box-sizing: border-box;
   transition: color 80ms 0ms linear, background 80ms 0ms linear;
   font-family: "Noto Sans JP", sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
 }
 
 .iziModal {
@@ -1561,6 +1565,10 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   vertical-align: middle;
   height: 20px;
   margin-left: 5px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_body > .message_pane > div > div > .message_list > .hider > .child > .scroll_container > .list_item > .message > .hover > .actions > .gutter > .right > .blocks > .message_blocks > .renderer > .block_wrapper > .rich_text_block > .rich_text_section > .mrkdwn__br {
   display: block;
