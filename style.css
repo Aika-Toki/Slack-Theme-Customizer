@@ -160,32 +160,45 @@ body {
   background: transparent;
 }
 
-#search-modal .box {
+.modal .box {
   background-color: var(--background);
   color: var(--foreground);
 }
-#search-modal .box .input {
+.modal .box .colorpick-eyedropper-input-trigger {
+  display: none;
+}
+.modal .box input[type=color] {
+  width: 40px;
+  padding: 0;
+}
+.modal .box .label {
+  color: var(--foreground);
+}
+.modal .box .input {
   background-color: var(--background);
   color: var(--foreground);
   border-color: #565856;
 }
-#search-modal .box .input:hover {
+.modal .box .input:hover {
   border-color: #aaacaa;
 }
-#search-modal .box .input:focus {
+.modal .box .input:focus {
   border-color: var(--focus-color, #3e55bd);
 }
-#search-modal .box .input::-moz-placeholder {
+.modal .box .input::-moz-placeholder {
   color: #888988;
 }
-#search-modal .box .input::placeholder {
+.modal .box .input::placeholder {
   color: #888988;
 }
-#search-modal .box .button.is-primary {
+.modal .box .input[disabled] {
+  opacity: 0.4;
+}
+.modal .box .button.is-primary {
   background-color: var(--btn-primary, #006b5a);
   color: var(--background);
 }
-#search-modal .box .button.is-danger {
+.modal .box .button.is-danger {
   background-color: var(--btn-danger, #b81742);
   color: var(--background);
 }
@@ -1428,7 +1441,6 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   background: none;
   border: 0;
   color: inherit;
-  cursor: pointer;
   font: inherit;
   line-height: inherit;
   margin: 0;
@@ -1441,7 +1453,6 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   display: inline-block;
   outline: none;
   position: relative;
-  cursor: pointer;
   flex-shrink: 0;
   --sk_avatar-border-radius: var(--ia4_sk_avatar-radius, 3px);
   height: 36px;
@@ -1497,7 +1508,6 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   border: 0;
   color: inherit;
   color: rgba(var(--sk_highlight, 18, 100, 163), 1);
-  cursor: pointer;
   font: inherit;
   line-height: inherit;
   margin: 0;
@@ -1866,10 +1876,11 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   width: 28px;
   background: rgba(var(--sk_foreground_soft, 29, 28, 29), 0.06);
   border-radius: 50% !important;
-  height: 24px;
   position: relative;
   transform-origin: center center;
-  width: 24px;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .prefix > div > .shortcuts_menu_trigger_button_container > .composer_ia_icon_button > ._button:hover {
+  background: rgba(var(--sk_foreground_soft, 29, 28, 29), 0.2);
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .prefix > div > .shortcuts_menu_trigger_button_container > .composer_ia_icon_button > ._button::before {
   bottom: -2px;
@@ -1889,6 +1900,7 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   width: 1em;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons {
+  margin-left: 4px;
   padding: 4px;
   flex: 1;
   padding-left: 0;
@@ -1898,6 +1910,35 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   align-items: center;
   display: flex;
   position: relative;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > .accessibility_badge {
+  position: relative;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > .accessibility_badge > .badge img {
+  vertical-align: middle;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > .accessibility_badge > .tooltip {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -30px;
+  display: inline-block;
+  padding: 5px;
+  white-space: nowrap;
+  font-size: 0.8rem;
+  line-height: 1.3;
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--foreground);
+  border-radius: 3px;
+  transition: 0.3s ease-in;
+  z-index: 8;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > .accessibility_badge:hover > .tooltip {
+  opacity: 1;
+  visibility: visible;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button {
   background: none;
@@ -1926,11 +1967,24 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   width: 28px;
   margin-left: 2px;
 }
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button:hover {
+  background: rgba(var(--sk_foreground_low_solid, 230, 230, 230), 1);
+}
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button.light > .dark {
   display: none;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button.dark > .light {
   display: none;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button > svg {
+  display: block;
+  flex-shrink: 0;
+  font-size: var(--s, inherit);
+  height: 1em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  width: 1em;
+  --s: 18px;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button > div > svg {
   display: block;
@@ -1941,6 +1995,59 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   print-color-adjust: exact;
   width: 1em;
   --s: 18px;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .suffix {
+  padding: 4px;
+  align-items: flex-end;
+  display: flex;
+  flex-shrink: 0;
+  padding-right: 2px;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .suffix > .send_button {
+  border-radius: 4px;
+  display: inline-flex;
+  margin-left: 0;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .suffix > .send_button > ._button {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: inherit;
+  margin: 0;
+  overflow: initial;
+  padding: 0;
+  text-align: initial;
+  vertical-align: initial;
+  align-items: center;
+  border-radius: 4px;
+  display: inline-flex;
+  justify-content: center;
+  position: relative;
+  border-radius: 4px;
+  height: 28px;
+  margin: 2px;
+  padding: 2px;
+  width: 28px;
+  background: #007a5a;
+  color: #fff;
+  margin: 0;
+  border-radius: 4px;
+  padding-left: 8px;
+  padding-right: 8px;
+  position: relative;
+  width: auto;
+}
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .suffix > .send_button > ._button > svg {
+  display: block;
+  flex-shrink: 0;
+  font-size: var(--s, inherit);
+  height: 1em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  width: 1em;
+  --s: 16px;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .notification_bar {
   align-items: center;

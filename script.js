@@ -1,4 +1,6 @@
 import chroma from "chroma-js";
+import iziToast from "izitoast";
+import Swal from "sweetalert2";
 
 const contentText = {
   en_us: {
@@ -105,7 +107,7 @@ function random() {
   result.splice(1, 0, "#000000");
   editorFix();
   document.querySelector(".editor_input").value = result.join(",");
-  editorPreview();
+  onEditorBlured();
 }
 function addColorPreviews(text) {
   var colorRegex = /#[0-9A-Fa-f]{6}\b/g;
@@ -129,17 +131,48 @@ function get(q, qt) {
   if (qt != "" && qt != undefined) query.push(`qt=${qt}`);
   let querystr = query.length != 0 ? "?" + query.join("&") : "";
   let uri = "https://script.google.com/macros/s/AKfycbxUEOZJsoVz3z1znXUYiBVhG7ZYy-kBFXLyUn6XGnjaCfTjDlubh-rgVJS6pIXtS-_p/exec" + querystr;
-  console.log(uri);
   fetch(uri)
     .then((r) => r.json())
     .then((data) => {
-      console.log(data);
+      // console.log(data);
       if (data.status == true) {
         setData(data.content);
         document.querySelector(".loading").classList.add("hidden");
         document.querySelector(".filters").classList.remove("loader");
       } else {
-        console.error(data.content);
+        Swal.fire("Error", data.content, "error");
+      }
+    });
+}
+function fpost() {
+  $("#post-modal").iziModal("close");
+  let title = document.querySelector("#post__title").value;
+  let tag = document
+    .querySelector("#post__tag")
+    .value.split(" ")
+    .map((e) => capitalize(e));
+  let code = document.querySelector("#editor_input").getAttribute("data-clear-code");
+  let author = document.querySelector("#post__author").value;
+  post(title, tag, code, author);
+}
+function post(title, tag, code, author) {
+  let data = { title: title, tag: tag, code: code, author: author };
+  let format = btoa(JSON.stringify(data));
+  let uri = "https://script.google.com/macros/s/AKfycbxUEOZJsoVz3z1znXUYiBVhG7ZYy-kBFXLyUn6XGnjaCfTjDlubh-rgVJS6pIXtS-_p/exec";
+  if (document.querySelector(".loading").classList.contains("hidden")) document.querySelector(".loading").classList.remove("hidden");
+  if (!document.querySelector(".filters").classList.contains("loader")) document.querySelector(".filters").classList.add("loader");
+  console.log(uri);
+  fetch(uri, {
+    method: "POST",
+    body: format,
+  })
+    .then((r) => r.json())
+    .then((data) => {
+      console.log(data);
+      if (data.status == true) {
+        refresh();
+      } else {
+        Swal.fire("Error", data.content, "error");
       }
     });
 }
@@ -153,7 +186,7 @@ function setData(data) {
       n.innerHTML = n.innerHTML.replace("{variable.themeName}", d.title);
       n.innerHTML = n.innerHTML.replace("{variable.themeCode}", d.code);
       n.innerHTML = n.innerHTML.replace("{variable.themeTag}", d.tag.map((_e) => capitalize(_e)).join(", "));
-      n.querySelector(".stc-theme__tag").outerHTML += accessibilityBadge(checkAccessibility(d.code));
+      n.querySelector(".stc-theme__tag").outerHTML += accessibilityBadge(checkAccessibility(d.code)[0]);
       n.querySelector(".stc-theme__code").innerHTML = addColorPreviews(n.querySelector(".stc-theme__code").textContent);
       n.querySelector(".stc-theme__code").setAttribute("data-code", d.code);
       n.querySelector(".stc-theme__author__avatar").style.filter = "hue-rotate(" + Math.floor(Math.random() * 36) + "0deg)";
@@ -206,14 +239,32 @@ function preview(e) {
   checkAccessibility(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
 }
 function copy(e) {
-  navigator.clipboard.writeText(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
+  navigator.permissions.query({ name: "clipboard-write" }).then((r) => {
+    if (r.state == "denied") {
+      Swal.fire("Error", "Writing to the clipboard has been denied", "error");
+    } else {
+      navigator.clipboard.writeText(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
+      iziToast.show({
+        title: "Copied!!",
+        color: "green",
+        position: "topCenter",
+        timeout: 2000,
+      });
+    }
+  });
 }
 function openSearchModal() {
   $("#search-modal").iziModal("open", {
     overlayClose: false,
   });
-  document.querySelector("#button_search").addEventListener("click", search);
-  document.querySelector("#button_clearSearch").addEventListener("click", clearSearch);
+}
+function openPostModal() {
+  $("#post-modal").iziModal("open", {
+    overlayClose: false,
+  });
+}
+function openEditModal() {
+  $("#edit-modal").iziModal("open");
 }
 function search() {
   $("#search-modal").iziModal("close");
@@ -239,6 +290,7 @@ function clearSearch() {
 function checkAccessibility(colorstr) {
   let colors = colorstr.split(",");
   let score = [];
+  let details = [];
   let element = [
     [colors[0], colors[5]],
     [colors[4], colors[5]],
@@ -246,14 +298,20 @@ function checkAccessibility(colorstr) {
     [colors[7], "#ffffff"],
     [colors[8], colors[9]],
   ];
+  let elementName = ["Sidebar-Base", "Sidebar-Hover", "Sidebar-Select", "Mention-Badge", "Topbar"];
+  let unavailableElement = [];
+  let count = -1;
   element.forEach((e) => {
+    count++;
     let contrastRatio = chroma.contrast(e[0], e[1]);
+    details.push(`${e[0]} / ${e[1]} => ${contrastRatio}`);
     if (contrastRatio >= 7.0) {
       score.push("S");
     } else if (contrastRatio >= 4.5) {
       score.push("A");
     } else {
       score.push("-");
+      unavailableElement.push(elementName[count]);
     }
   });
   let resultClass = ["s", "a", "-"];
@@ -267,7 +325,9 @@ function checkAccessibility(colorstr) {
     resultClass = resultClass[2];
   }
   console.log(`${resultClass} (${score})`);
-  return resultClass;
+  console.log(details);
+  let unavailableElementstr = unavailableElement.length != 0 ? unavailableElement.join(", ") : "None";
+  return [resultClass, unavailableElementstr];
 }
 function accessibilityBadge(score) {
   let url = "";
@@ -285,16 +345,59 @@ function capitalize(str) {
   if (typeof str !== "string" || !str) return str;
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
+function checkEditingColor(colorstr) {
+  document.querySelector(".accessibility_badge>.badge").innerHTML = accessibilityBadge(checkAccessibility(colorstr)[0]);
+  document.querySelector(".accessibility_badge>.tooltip").textContent = "Unavailable: " + checkAccessibility(colorstr)[1];
+}
+function onEditorBlured() {
+  editorPreview();
+  setVisualEditor();
+  checkEditingColor(document.querySelector(".editor_input").getAttribute("data-clear-code"));
+}
+function setVisualEditor() {
+  let data = document.querySelector(".editor_input").getAttribute("data-clear-code").split(",");
+  $(".sidebar_bg").val(data[0]);
+  $(".sidebar_item_fg").val(data[5]);
+  $(".sidebar_item_bg_select").val(data[2]);
+  $(".sidebar_item_fg_select").val(data[3]);
+  $(".sidebar_item_bg_hover").val(data[4]);
+  $(".mention_badge").val(data[7]);
+  $(".active_badge").val(data[6]);
+  $(".topbar_bg").val(data[8]);
+  $(".topbar_fg").val(data[9]);
+}
+function apply2Editor(event) {
+  let tar = event.target;
+  let tarclass = Array.from(tar.classList).filter((e) => e != "input")[0];
+  $("." + tarclass).val(tar.value);
+  let data = [$(".sidebar_bg").val(), "#000000", $(".sidebar_item_bg_select").val(), $(".sidebar_item_fg_select").val(), $(".sidebar_item_bg_hover").val(), $(".sidebar_item_fg").val(), $(".active_badge").val(), $(".mention_badge").val(), $(".topbar_bg").val(), $(".topbar_fg").val()];
+  $(".editor_input").val(data.join(","));
+  onEditorBlured();
+}
 setLangText();
-editorPreview();
+onEditorBlured();
 // getColorScheme();
 $("#search-modal").iziModal();
-document.querySelector(".button_random").addEventListener("click", random);
-document.querySelector("input#colorInput").addEventListener("change", (e) => getColorScheme(e.target.value));
-document.querySelector(".editor_input").addEventListener("input", editorStatus);
-document.querySelector(".editor_input").addEventListener("blur", editorPreview);
-document.querySelector(".editor_input").addEventListener("focus", editorFix);
-document.querySelector("button.filters").addEventListener("click", refresh);
-document.querySelector("button.search").addEventListener("click", openSearchModal);
+$("#post-modal").iziModal();
+$("#edit-modal").iziModal({
+  overlayClose: false,
+  width: 800,
+});
+$(".button_random").on("click", random);
+$(".editor_input").on("input", editorStatus);
+$(".editor_input").on("blur", onEditorBlured);
+$(".editor_input").on("focus", editorFix);
+$("button.filters").on("click", refresh);
+$("button.search").on("click", openSearchModal);
+$("button.post").on("click", openPostModal);
+$(".button_edit").on("click", openEditModal);
+$("#button_search").on("click", search);
+$("#button_clearSearch").on("click", clearSearch);
+$("#button_post").on("click", fpost);
+$("#button_close").on("click", () => {
+  $("#edit-modal").iziModal("close");
+});
+$("#edit-modal input").on("input", apply2Editor);
+setVisualEditor();
 
 get();

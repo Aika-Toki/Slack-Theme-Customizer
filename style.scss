@@ -3,8 +3,7 @@
   font-family: Slack v2;
   font-style: normal;
   font-weight: 400;
-  src: url("https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/slic.woff2") format("woff2"),
-    url("https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/slic.woff") format("woff");
+  src: url("https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/slic.woff2") format("woff2"), url("https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/Assets/slic.woff") format("woff");
 }
 
 // Animations
@@ -157,10 +156,20 @@ body {
 .iziModal {
   background: transparent;
 }
-#search-modal {
+.modal {
   .box {
     background-color: var(--background);
     color: var(--foreground);
+    & .colorpick-eyedropper-input-trigger {
+      display: none;
+    }
+    & input[type="color"] {
+      width: 40px;
+      padding: 0;
+    }
+    .label {
+      color: var(--foreground);
+    }
     .input {
       background-color: var(--background);
       color: var(--foreground);
@@ -173,6 +182,9 @@ body {
       }
       &::placeholder {
         color: #888988;
+      }
+      &[disabled] {
+        opacity: 0.4;
       }
     }
     .button {
@@ -1423,7 +1435,6 @@ div#preview {
                                               background: none;
                                               border: 0;
                                               color: inherit;
-                                              cursor: pointer;
                                               font: inherit;
                                               line-height: inherit;
                                               margin: 0;
@@ -1436,7 +1447,6 @@ div#preview {
                                               display: inline-block;
                                               outline: none;
                                               position: relative;
-                                              cursor: pointer;
                                               flex-shrink: 0;
                                               --sk_avatar-border-radius: var(--ia4_sk_avatar-radius, 3px);
                                               height: 36px;
@@ -1491,7 +1501,6 @@ div#preview {
                                                 border: 0;
                                                 color: inherit;
                                                 color: rgba(var(--sk_highlight, 18, 100, 163), 1);
-                                                cursor: pointer;
                                                 font: inherit;
                                                 line-height: inherit;
                                                 margin: 0;
@@ -1872,11 +1881,12 @@ div#preview {
                                           width: 28px;
                                           background: rgba(var(--sk_foreground_soft, 29, 28, 29), 0.06);
                                           border-radius: 50% !important;
-                                          height: 24px;
                                           position: relative;
                                           transform-origin: center center;
+                                          &:hover {
+                                            background: rgba(var(--sk_foreground_soft, 29, 28, 29), 0.2);
+                                          }
                                           // transition: background 80ms, transform 80ms;
-                                          width: 24px;
                                           &::before {
                                             bottom: -2px;
                                             content: "";
@@ -1900,6 +1910,7 @@ div#preview {
                                   }
                                 }
                                 & > .toolbar_buttons {
+                                  margin-left: 4px;
                                   padding: 4px;
                                   flex: 1;
                                   padding-left: 0;
@@ -1908,7 +1919,43 @@ div#preview {
                                     align-items: center;
                                     display: flex;
                                     position: relative;
+                                    & > .accessibility_badge {
+                                      position: relative;
+                                      & > .badge {
+                                        img {
+                                          vertical-align: middle;
+                                        }
+                                      }
+                                      & > .tooltip {
+                                        opacity: 0;
+                                        visibility: hidden;
+                                        position: absolute;
+                                        left: 50%;
+                                        transform: translateX(-50%);
+                                        top: -30px;
+                                        display: inline-block;
+                                        padding: 5px;
+                                        white-space: nowrap;
+                                        font-size: 0.8rem;
+                                        line-height: 1.3;
+                                        background: var(--background);
+                                        color: var(--foreground);
+                                        border: 1px solid var(--foreground);
+                                        border-radius: 3px;
+                                        transition: 0.3s ease-in;
+                                        z-index: 8;
+                                      }
+                                      &:hover {
+                                        & > .tooltip {
+                                          opacity: 1;
+                                          visibility: visible;
+                                        }
+                                      }
+                                    }
                                     & > ._button {
+                                      &:hover {
+                                        background: rgba(var(--sk_foreground_low_solid, 230, 230, 230), 1);
+                                      }
                                       background: none;
                                       border: 0;
                                       color: inherit;
@@ -1941,6 +1988,16 @@ div#preview {
                                       &.dark > .light {
                                         display: none;
                                       }
+                                      & > svg {
+                                        display: block;
+                                        flex-shrink: 0;
+                                        font-size: var(--s, inherit);
+                                        height: 1em;
+                                        -webkit-print-color-adjust: exact;
+                                        print-color-adjust: exact;
+                                        width: 1em;
+                                        --s: 18px;
+                                      }
                                       & > div {
                                         & > svg {
                                           display: block;
@@ -1952,6 +2009,59 @@ div#preview {
                                           width: 1em;
                                           --s: 18px;
                                         }
+                                      }
+                                    }
+                                  }
+                                }
+                                & > .suffix {
+                                  padding: 4px;
+                                  align-items: flex-end;
+                                  display: flex;
+                                  flex-shrink: 0;
+                                  padding-right: 2px;
+                                  & > .send_button {
+                                    border-radius: 4px;
+                                    display: inline-flex;
+                                    margin-left: 0;
+                                    & > ._button {
+                                      background: none;
+                                      border: 0;
+                                      color: inherit;
+                                      cursor: pointer;
+                                      font: inherit;
+                                      line-height: inherit;
+                                      margin: 0;
+                                      overflow: initial;
+                                      padding: 0;
+                                      text-align: initial;
+                                      vertical-align: initial;
+                                      align-items: center;
+                                      border-radius: 4px;
+                                      display: inline-flex;
+                                      justify-content: center;
+                                      position: relative;
+                                      border-radius: 4px;
+                                      height: 28px;
+                                      margin: 2px;
+                                      padding: 2px;
+                                      width: 28px;
+                                      background: #007a5a;
+                                      color: #fff;
+                                      margin: 0;
+                                      border-radius: 4px;
+                                      padding-left: 8px;
+                                      padding-right: 8px;
+                                      position: relative;
+                                      width: auto;
+                                      & > svg {
+                                        display: block;
+                                        flex-shrink: 0;
+                                        font-size: var(--s, inherit);
+                                        height: 1em;
+                                        -webkit-print-color-adjust: exact;
+                                        print-color-adjust: exact;
+                                        width: 1em;
+                                        --s: 16px;
                                       }
                                     }
                                   }
