@@ -252,10 +252,12 @@ function checkAccessibility(colorstr) {
       score.push("S");
     } else if (contrastRatio >= 4.5) {
       score.push("A");
+    } else {
+      score.push("-");
     }
   });
   let resultClass = ["s", "a", "-"];
-  if (score.length == element.length) {
+  if (score.filter((e) => e != "-").length == element.length) {
     if (score.filter((e) => e == "S").length >= Math.ceil(element.length / 2)) {
       resultClass = resultClass[0];
     } else {
