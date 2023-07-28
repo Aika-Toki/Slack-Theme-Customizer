@@ -272,7 +272,7 @@ function accessibilityBadge(score) {
   if (score == "s") {
     url = "https://img.shields.io/badge/Accessibility-Class--S-009dc4?style=flat";
   } else if (score == "a") {
-    url = "https://img.shields.io/badge/Accessibility-Class--A-48a34f?style=for-the-badge";
+    url = "https://img.shields.io/badge/Accessibility-Class--A-48a34f?style=flat";
   } else {
     url = "https://img.shields.io/badge/Accessibility----CCCCCC?style=flat";
   }
