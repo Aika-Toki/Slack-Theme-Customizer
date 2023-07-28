@@ -256,7 +256,7 @@ function checkAccessibility(colorstr) {
   });
   let resultClass = ["s", "a", "-"];
   if (score.length == element.length) {
-    if (score.includes("S")) {
+    if (score.filter((e) => e == "S").length >= Math.ceil(element.length / 2)) {
       resultClass = resultClass[0];
     } else {
       resultClass = resultClass[1];
