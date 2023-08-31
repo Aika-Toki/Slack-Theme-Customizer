@@ -505,8 +505,8 @@ $("#button_post").on("click", fpost);
 $("#button_close").on("click", () => {
   $("#edit-modal").iziModal("close");
 });
-$('#edit-modal input[type="color"]').on("input", apply2Editor);
-$('#edit-modal input[type="text"]').on("change", apply2Editor);
+$("#edit-modal input.input_color").on("input", apply2Editor);
+$("#edit-modal input.input_text").on("change", apply2Editor);
 setVisualEditor();
 
 get();
