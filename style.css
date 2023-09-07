@@ -120,6 +120,12 @@ html.dark {
 html {
   overflow: hidden;
 }
+html.light .dark {
+  display: none;
+}
+html.dark .light {
+  display: none;
+}
 
 :root {
   --sidebar-bg: #414;
@@ -1934,7 +1940,8 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   right: -2px;
   top: -2px;
 }
-div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .prefix > div > .shortcuts_menu_trigger_button_container > .composer_ia_icon_button > ._button > svg {
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .prefix > div > .shortcuts_menu_trigger_button_container > .composer_ia_icon_button > ._button > svg,
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .prefix > div > .shortcuts_menu_trigger_button_container > .composer_ia_icon_button > ._button > span {
   display: block;
   flex-shrink: 0;
   font-size: var(--s, inherit);
@@ -2014,13 +2021,8 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button:hover {
   background: rgba(var(--sk_foreground_low_solid, 230, 230, 230), 1);
 }
-div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button.light > .dark {
-  display: none;
-}
-div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button.dark > .light {
-  display: none;
-}
-div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button > svg {
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button > svg,
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button > span {
   display: block;
   flex-shrink: 0;
   font-size: var(--s, inherit);
@@ -2030,7 +2032,8 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   width: 1em;
   --s: 18px;
 }
-div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button > div > svg {
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button > div > svg,
+div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > ._button > div > span {
   display: block;
   flex-shrink: 0;
   font-size: var(--s, inherit);

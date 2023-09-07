@@ -463,6 +463,10 @@ function setVisualEditor() {
   $(".topbar_bg").val(data[8]);
   $(".topbar_fg").val(data[9]);
 }
+function changeColorScheme() {
+  $("html").toggleClass("light");
+  $("html").toggleClass("dark");
+}
 function apply2Editor(event) {
   let tar = event.target;
   let tarclass = Array.from(tar.classList).filter((e) => e != "input")[0];
@@ -492,6 +496,7 @@ $("#edit-modal").iziModal({
   width: 800,
 });
 $(".button_random").on("click", random);
+$(".button_color-scheme").on("click", changeColorScheme);
 $(".editor_input").on("input", editorStatus);
 $(".editor_input").on("blur", onEditorBlured);
 $(".editor_input").on("focus", editorFix);

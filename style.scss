@@ -124,6 +124,12 @@ html.dark {
 }
 html {
   overflow: hidden;
+  &.light .dark {
+    display: none;
+  }
+  &.dark .light {
+    display: none;
+  }
 }
 :root {
   --sidebar-bg: #414;
@@ -2173,7 +2179,8 @@ div#preview {
                                             right: -2px;
                                             top: -2px;
                                           }
-                                          & > svg {
+                                          & > svg,
+                                          > span {
                                             display: block;
                                             flex-shrink: 0;
                                             font-size: var(--s, inherit);
@@ -2271,13 +2278,14 @@ div#preview {
                                       padding: 2px;
                                       width: 28px;
                                       margin-left: 2px;
-                                      &.light > .dark {
-                                        display: none;
-                                      }
-                                      &.dark > .light {
-                                        display: none;
-                                      }
-                                      & > svg {
+                                      // &.light > .dark {
+                                      //   display: none;
+                                      // }
+                                      // &.dark > .light {
+                                      //   display: none;
+                                      // }
+                                      & > svg,
+                                      > span {
                                         display: block;
                                         flex-shrink: 0;
                                         font-size: var(--s, inherit);
@@ -2288,7 +2296,8 @@ div#preview {
                                         --s: 18px;
                                       }
                                       & > div {
-                                        & > svg {
+                                        & > svg,
+                                        > span {
                                           display: block;
                                           flex-shrink: 0;
                                           font-size: var(--s, inherit);
