@@ -2208,7 +2208,7 @@ div#preview {
                                       position: relative;
                                       & > .badge {
                                         img {
-                                          vertical-align: middle;
+                                          vertical-align: sub;
                                         }
                                       }
                                       & > .tooltip {
@@ -2229,6 +2229,7 @@ div#preview {
                                         border-radius: 3px;
                                         transition: 0.3s ease-in;
                                         z-index: 8;
+                                        display: none;
                                       }
                                       &:hover {
                                         & > .tooltip {

@@ -1,48 +1,19 @@
 import chroma from "chroma-js";
 import iziToast from "izitoast";
 import Swal from "sweetalert2";
+import tippy from "tippy.js";
+import "tippy.js/dist/tippy.css";
+import "tippy.js/themes/material.css";
+import "tippy.js/animations/shift-away.css";
 
-const contentText = {
-  en_us: {
-    "action.copy": "Copy",
-    "action.preview": "Preview",
-    "interface.channel": "Channel",
-    "interface.channelSection": "Channels",
-    "interface.directMessages": "Direct messages",
-    "interface.hoveredChannel": "Hovered Channel",
-    "interface.mentionedChannel": "Mentioned Channel",
-    "interface.moreUnreadsBadge": "More unreads",
-    "interface.notFoundDescription": "Please try another word",
-    "interface.notFoundLead": "Not Found",
-    "interface.search": "Search Workspace",
-    "interface.selectedChannel": "Selected Channel",
-    "interface.unreadChannel": "Unread Channel",
-    "interface.unreadMentionsBadge": "Unread mentions",
-    "interface.user": "User",
-    "interface.workspace": "Workspace",
-    "interface.writeThemeCode":
-      "Write down the color code of your custom theme",
-  },
-  ja_jp: {
-    "action.copy": "コピー",
-    "action.preview": "プレビュー",
-    "interface.channel": "チャンネル",
-    "interface.channelSection": "チャンネル",
-    "interface.directMessages": "ダイレクトメッセージ",
-    "interface.hoveredChannel": "チャンネルホバー時",
-    "interface.mentionedChannel": "メンションされたチャンネル",
-    "interface.moreUnreadsBadge": "その他の未読メッセージ",
-    "interface.notFoundDescription": "他のワードでお試しください",
-    "interface.notFoundLead": "見つかりませんでした",
-    "interface.search": "ワークスペース 内を検索する",
-    "interface.selectedChannel": "チャンネル選択時",
-    "interface.unreadChannel": "未読のチャンネル",
-    "interface.unreadMentionsBadge": "未読のメンション",
-    "interface.user": "ユーザー",
-    "interface.workspace": "ワークスペース",
-    "interface.writeThemeCode": "カスタムテーマのカラーコードを入力",
-  },
-};
+let langFetch = await fetch(
+  "https://raw.githubusercontent.com/Aika-Toki/Slack-Theme-Customizer/master/langdata.json"
+);
+let contentText;
+await langFetch.json().then((e) => {
+  contentText = e;
+});
+console.log(contentText);
 function searchQuery() {
   let search = location.search.substr(1, location.search.length);
   let query = {};
@@ -54,19 +25,21 @@ function searchQuery() {
 }
 function getLangText(key) {
   let language = searchQuery()["hl"];
-  if (!language || !contentText.hasOwnProperty(language))
+  if (!language || !contentText[key].hasOwnProperty(language))
     location.search = "?hl=en_us";
-  return contentText[language][key] || contentText["en_us"][key];
+  return contentText[key][language] || contentText[key]["en_us"];
 }
 function setLangText() {
   let language = searchQuery()["hl"];
-  if (!language || !contentText.hasOwnProperty(language))
+  if (!language || !contentText["language"].hasOwnProperty(language))
     location.search = "?hl=en_us";
-  let key = Object.keys(contentText["en_us"]);
+  let key = Object.keys(contentText);
   key.forEach((e) => {
-    document.body.innerHTML = document.body.innerHTML.replaceAll(
-      `{${e}}`,
-      contentText[language][e] || contentText["en_us"][e]
+    Array.from(
+      document.body.querySelectorAll('[data-lang="' + e + '"]')
+    ).forEach(
+      (_e) =>
+        (_e.textContent = contentText[e][language] || contentText[e]["en_us"])
     );
   });
 }
@@ -421,12 +394,23 @@ function accessibilityBadge(score) {
   let url = "";
   if (score == "s") {
     url =
-      "https://img.shields.io/badge/Accessibility-Class--S-009dc4?style=flat";
+      "https://img.shields.io/badge/" +
+      getLangText("interface.accessibility") +
+      "-" +
+      getLangText("interface.accessibilityS") +
+      "-009dc4?style=flat";
   } else if (score == "a") {
     url =
-      "https://img.shields.io/badge/Accessibility-Class--A-48a34f?style=flat";
+      "https://img.shields.io/badge/" +
+      getLangText("interface.accessibility") +
+      "-" +
+      getLangText("interface.accessibilityA") +
+      "-48a34f?style=flat";
   } else {
-    url = "https://img.shields.io/badge/Accessibility----CCCCCC?style=flat";
+    url =
+      "https://img.shields.io/badge/" +
+      getLangText("interface.accessibility") +
+      "----CCCCCC?style=flat";
   }
   let tag = `<img class="stc-theme__accessibility-badge" src="${url}">`;
   return tag;
@@ -438,8 +422,17 @@ function capitalize(str) {
 function checkEditingColor(colorstr) {
   document.querySelector(".accessibility_badge>.badge").innerHTML =
     accessibilityBadge(checkAccessibility(colorstr)[0]);
-  document.querySelector(".accessibility_badge>.tooltip").textContent =
-    "Unavailable: " + checkAccessibility(colorstr)[1];
+  setTooltip(
+    ".accessibility_badge>.badge",
+    getLangText("interface.incompatible") +
+      ": " +
+      checkAccessibility(colorstr)[1],
+    "top"
+  );
+  // document.querySelector(".accessibility_badge>.tooltip").textContent =
+  //   getLangText("interface.incompatible") +
+  //   ": " +
+  //   checkAccessibility(colorstr)[1];
 }
 function onEditorBlured() {
   editorPreview();
@@ -486,6 +479,15 @@ function apply2Editor(event) {
   $(".editor_input").val(data.join(","));
   onEditorBlured();
 }
+function setTooltip(q, c, p) {
+  tippy(q, {
+    content: c,
+    theme: "material",
+    animation: "shift-away",
+    placement: p,
+    arrow: false,
+  });
+}
 setLangText();
 onEditorBlured();
 // getColorScheme();
@@ -513,5 +515,10 @@ $("#button_close").on("click", () => {
 $("#edit-modal input.input_color").on("input", apply2Editor);
 $("#edit-modal input.input_text").on("change", apply2Editor);
 setVisualEditor();
+
+setTooltip(".button_random", getLangText("tooltip.random"), "top");
+setTooltip(".button_color-scheme", getLangText("tooltip.colorScheme"), "top");
+setTooltip(".button_materialize", getLangText("tooltip.materialize"), "top");
+setTooltip(".button_edit", getLangText("tooltip.edit"), "top");
 
 get();

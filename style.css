@@ -1966,7 +1966,7 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   position: relative;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > .accessibility_badge > .badge img {
-  vertical-align: middle;
+  vertical-align: sub;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > .accessibility_badge > .tooltip {
   opacity: 0;
@@ -1986,6 +1986,7 @@ div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._c
   border-radius: 3px;
   transition: 0.3s ease-in;
   z-index: 8;
+  display: none;
 }
 div#preview > .wrapper > .content > .primary_view > .primary_view_contents > ._container > div > .primary_view_footer > .primary_view_footer_inner > .message_pane_input > .message_pane_input_inner > .message_pane_input_inner_main > ._input > .input_container_unstyled > .body > .footer > .toolbar_buttons > .texty_buttons > .accessibility_badge:hover > .tooltip {
   opacity: 1;
