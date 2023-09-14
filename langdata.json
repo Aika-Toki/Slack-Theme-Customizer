@@ -16,11 +16,11 @@
     "ja_jp": "アクセシビリティ"
   },
   "interface.accessibilityS": {
-    "en_us": "Class-S",
+    "en_us": "Class--S",
     "ja_jp": "優良"
   },
   "interface.accessibilityA": {
-    "en_us": "Class-A",
+    "en_us": "Class--A",
     "ja_jp": "良"
   },
   "interface.channel": {
