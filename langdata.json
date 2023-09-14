@@ -1,4 +1,8 @@
 {
+  "language": {
+    "en_us": "English(United States)",
+    "ja_jp": "日本語"
+  },
   "action.copy": {
     "en_us": "Copy",
     "ja_jp": "コピー"
