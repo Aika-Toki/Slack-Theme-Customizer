@@ -1,7 +1,7 @@
 {
-  "language": {
-    "en_us": "English(United States)",
-    "ja_jp": "日本語"
+  "accessibility.none": {
+    "en_us": "None",
+    "ja_jp": "なし"
   },
   "action.copy": {
     "en_us": "Copy",
@@ -15,13 +15,13 @@
     "en_us": "Accessibility",
     "ja_jp": "アクセシビリティ"
   },
-  "interface.accessibilityS": {
-    "en_us": "Class--S",
-    "ja_jp": "優良"
-  },
   "interface.accessibilityA": {
     "en_us": "Class--A",
     "ja_jp": "良"
+  },
+  "interface.accessibilityS": {
+    "en_us": "Class--S",
+    "ja_jp": "優"
   },
   "interface.channel": {
     "en_us": "Channel",
@@ -30,6 +30,10 @@
   "interface.channelSection": {
     "en_us": "Channels",
     "ja_jp": "チャンネル"
+  },
+  "interface.close": {
+    "en_us": "Close",
+    "ja_jp": "閉じる"
   },
   "interface.directMessages": {
     "en_us": "Direct messages",
@@ -86,6 +90,10 @@
   "interface.writeThemeCode": {
     "en_us": "Write down the color code of your custom theme",
     "ja_jp": "カスタムテーマのカラーコードを入力"
+  },
+  "language": {
+    "en_us": "English(United States)",
+    "ja_jp": "日本語"
   },
   "tooltip.colorScheme": {
     "en_us": "Toggle Color-scheme",
