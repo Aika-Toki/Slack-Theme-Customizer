@@ -1,0 +1,94 @@
+{
+  "action.copy": {
+    "en_us": "Copy",
+    "ja_jp": "コピー"
+  },
+  "action.preview": {
+    "en_us": "Preview",
+    "ja_jp": "プレビュー"
+  },
+  "interface.accessibility": {
+    "en_us": "Accessibility",
+    "ja_jp": "アクセシビリティ"
+  },
+  "interface.channel": {
+    "en_us": "Channel",
+    "ja_jp": "チャンネル"
+  },
+  "interface.channelSection": {
+    "en_us": "Channels",
+    "ja_jp": "チャンネル"
+  },
+  "interface.directMessages": {
+    "en_us": "Direct messages",
+    "ja_jp": "ダイレクトメッセージ"
+  },
+  "interface.hoveredChannel": {
+    "en_us": "Hovered Channel",
+    "ja_jp": "チャンネルホバー時"
+  },
+  "interface.incompatible": {
+    "en_us": "Incompatible",
+    "ja_jp": "不適合"
+  },
+  "interface.mentionedChannel": {
+    "en_us": "Mentioned Channel",
+    "ja_jp": "メンションされたチャンネル"
+  },
+  "interface.moreUnreadsBadge": {
+    "en_us": "More unreads",
+    "ja_jp": "その他の未読メッセージ"
+  },
+  "interface.notFoundDescription": {
+    "en_us": "Please try another word",
+    "ja_jp": "他のワードでお試しください"
+  },
+  "interface.notFoundLead": {
+    "en_us": "Not Found",
+    "ja_jp": "見つかりませんでした"
+  },
+  "interface.search": {
+    "en_us": "Search Workspace",
+    "ja_jp": "ワークスペース 内を検索する"
+  },
+  "interface.selectedChannel": {
+    "en_us": "Selected Channel",
+    "ja_jp": "チャンネル選択時"
+  },
+  "interface.unreadChannel": {
+    "en_us": "Unread Channel",
+    "ja_jp": "未読のチャンネル"
+  },
+  "interface.unreadMentionsBadge": {
+    "en_us": "Unread mentions",
+    "ja_jp": "未読のメンション"
+  },
+  "interface.user": {
+    "en_us": "User",
+    "ja_jp": "ユーザー"
+  },
+  "interface.workspace": {
+    "en_us": "Workspace",
+    "ja_jp": "ワークスペース"
+  },
+  "interface.writeThemeCode": {
+    "en_us": "Write down the color code of your custom theme",
+    "ja_jp": "カスタムテーマのカラーコードを入力"
+  },
+  "tooltip.colorScheme": {
+    "en_us": "Toggle Color-scheme",
+    "ja_jp": "カラースキームを切替"
+  },
+  "tooltip.edit": {
+    "en_us": "Edit with Color Palette",
+    "ja_jp": "カラーパレットで編集"
+  },
+  "tooltip.materialize": {
+    "en_us": "Materialize",
+    "ja_jp": "マテリアルデザインにする"
+  },
+  "tooltip.random": {
+    "en_us": "Random!",
+    "ja_jp": "ランダム！"
+  }
+}
