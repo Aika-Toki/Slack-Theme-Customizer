@@ -15,6 +15,14 @@
     "en_us": "Accessibility",
     "ja_jp": "アクセシビリティ"
   },
+  "interface.accessibilityS": {
+    "en_us": "Class-S",
+    "ja_jp": "優良"
+  },
+  "interface.accessibilityA": {
+    "en_us": "Class-A",
+    "ja_jp": "良"
+  },
   "interface.channel": {
     "en_us": "Channel",
     "ja_jp": "チャンネル"
