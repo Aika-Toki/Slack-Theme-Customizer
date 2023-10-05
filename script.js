@@ -19,15 +19,22 @@ function searchQuery() {
 }
 function getLangText(key) {
   let language = searchQuery()["hl"];
-  if (!language || !contentText[key].hasOwnProperty(language)) location.search = "?hl=en_us";
+  if (!language || !contentText[key].hasOwnProperty(language))
+    location.search = "?hl=en_us";
   return contentText[key][language] || contentText[key]["en_us"];
 }
 function setLangText() {
   let language = searchQuery()["hl"];
-  if (!language || !contentText["language"].hasOwnProperty(language)) location.search = "?hl=en_us";
+  if (!language || !contentText["language"].hasOwnProperty(language))
+    location.search = "?hl=en_us";
   let key = Object.keys(contentText);
   key.forEach((e) => {
-    Array.from(document.body.querySelectorAll('[data-lang="' + e + '"]')).forEach((_e) => (_e.textContent = contentText[e][language] || contentText[e]["en_us"]));
+    Array.from(
+      document.body.querySelectorAll('[data-lang="' + e + '"]')
+    ).forEach(
+      (_e) =>
+        (_e.textContent = contentText[e][language] || contentText[e]["en_us"])
+    );
   });
 }
 function generateColor() {
@@ -44,19 +51,34 @@ function generateColor() {
 }
 function getColorScheme(colorstr) {
   console.debug(colorstr);
-  let _default = "#3F0E40,#000000,#1164A3,#FFFFFF,#4D2A51,#FFFFFF,#2BAC76,#CD2553,#350d36,#FFFFFF";
+  let _default =
+    "#3F0E40,#000000,#1164A3,#FFFFFF,#4D2A51,#FFFFFF,#2BAC76,#CD2553,#350d36,#FFFFFF";
   let result = [];
-  let property = ["sidebar-bg", "sidebar-item-bg-select", "sidebar-item-fg-select", "sidebar-item-bg-hover", "sidebar-item-fg", "active-badge", "mention-badge", "topnav-bg", "topnav-fg"];
+  let property = [
+    "sidebar-bg",
+    "sidebar-item-bg-select",
+    "sidebar-item-fg-select",
+    "sidebar-item-bg-hover",
+    "sidebar-item-fg",
+    "active-badge",
+    "mention-badge",
+    "topnav-bg",
+    "topnav-fg",
+  ];
   result = colorstr ? colorstr.split(",") : _default.split(",");
   result.splice(1, 1);
   let cp = Array.from(document.querySelectorAll("div#colorPreview>div"));
   for (let i = 0; i < cp.length; i++) {
     cp[i].style.setProperty("--bgColor", result[i]);
-    document.querySelector(":root").style.setProperty(`--${property[i]}`, result[i]);
+    document
+      .querySelector(":root")
+      .style.setProperty(`--${property[i]}`, result[i]);
     let a = result[i].substr(1, 6).match(/.{2}/g);
     a = a.map((e) => parseInt(e, 16));
     // console.debug(a);
-    document.querySelector(":root").style.setProperty(`--${property[i]}-rgb`, a.join(", "));
+    document
+      .querySelector(":root")
+      .style.setProperty(`--${property[i]}-rgb`, a.join(", "));
   }
   // document.body.innerHTML =
   //   '<input type="text" value="' +
@@ -79,24 +101,35 @@ function addColorPreviews(text) {
   var colorRegex = /#[0-9A-Fa-f]{6}\b/g;
 
   var newText = text.replace(colorRegex, (match) => {
-    return '<span class="color-preview--inline" style="background-color:' + match + '"></span>' + match;
+    return (
+      '<span class="color-preview--inline" style="background-color:' +
+      match +
+      '"></span>' +
+      match
+    );
   });
 
   return newText;
 }
 function get(q, qt) {
-  let els = Array.from(document.querySelector(".theme_list").querySelectorAll(".list_item"));
+  let els = Array.from(
+    document.querySelector(".theme_list").querySelectorAll(".list_item")
+  );
   els = els.filter((e) => !e.classList.contains("theme_item_template"));
   els.map((e) => {
     e.remove();
   });
-  if (document.querySelector(".loading").classList.contains("hidden")) document.querySelector(".loading").classList.remove("hidden");
-  if (!document.querySelector(".filters").classList.contains("loader")) document.querySelector(".filters").classList.add("loader");
+  if (document.querySelector(".loading").classList.contains("hidden"))
+    document.querySelector(".loading").classList.remove("hidden");
+  if (!document.querySelector(".filters").classList.contains("loader"))
+    document.querySelector(".filters").classList.add("loader");
   let query = [];
   if (q != "" && q != undefined) query.push(`q=${q}`);
   if (qt != "" && qt != undefined) query.push(`qt=${qt}`);
   let querystr = query.length != 0 ? "?" + query.join("&") : "";
-  let uri = "https://script.google.com/macros/s/AKfycbxUEOZJsoVz3z1znXUYiBVhG7ZYy-kBFXLyUn6XGnjaCfTjDlubh-rgVJS6pIXtS-_p/exec" + querystr;
+  let uri =
+    "https://script.google.com/macros/s/AKfycbxUEOZJsoVz3z1znXUYiBVhG7ZYy-kBFXLyUn6XGnjaCfTjDlubh-rgVJS6pIXtS-_p/exec" +
+    querystr;
   fetch(uri)
     .then((r) => r.json())
     .then((data) => {
@@ -117,16 +150,21 @@ function fpost() {
     .querySelector("#post__tag")
     .value.split(" ")
     .map((e) => capitalize(e));
-  let code = document.querySelector("#editor_input").getAttribute("data-clear-code");
+  let code = document
+    .querySelector("#editor_input")
+    .getAttribute("data-clear-code");
   let author = document.querySelector("#post__author").value;
   post(title, tag, code, author);
 }
 function post(title, tag, code, author) {
   let data = { title: title, tag: tag, code: code, author: author };
   let format = btoa(JSON.stringify(data));
-  let uri = "https://script.google.com/macros/s/AKfycbxUEOZJsoVz3z1znXUYiBVhG7ZYy-kBFXLyUn6XGnjaCfTjDlubh-rgVJS6pIXtS-_p/exec";
-  if (document.querySelector(".loading").classList.contains("hidden")) document.querySelector(".loading").classList.remove("hidden");
-  if (!document.querySelector(".filters").classList.contains("loader")) document.querySelector(".filters").classList.add("loader");
+  let uri =
+    "https://script.google.com/macros/s/AKfycbxUEOZJsoVz3z1znXUYiBVhG7ZYy-kBFXLyUn6XGnjaCfTjDlubh-rgVJS6pIXtS-_p/exec";
+  if (document.querySelector(".loading").classList.contains("hidden"))
+    document.querySelector(".loading").classList.remove("hidden");
+  if (!document.querySelector(".filters").classList.contains("loader"))
+    document.querySelector(".filters").classList.add("loader");
   console.debug(uri);
   fetch(uri, {
     method: "POST",
@@ -148,14 +186,32 @@ function setData(data) {
       let d = JSON.parse(e);
       let n = document.querySelector(".theme_item_template").cloneNode(true);
       n.classList.remove("theme_item_template");
-      n.querySelector('[data-variable="variable.themeAuthorName"]').textContent = d.author;
-      n.querySelector('[data-variable="variable.themeName"]').textContent = d.title;
-      n.querySelector('[data-variable="variable.themeCode"]').textContent = d.code;
-      n.querySelector('[data-variable="variable.themeTag"]').textContent = d.tag.map((_e) => capitalize(_e)).join(", ");
-      n.querySelector(".stc-theme__tag").outerHTML += accessibilityBadge(checkAccessibility(d.code)[0]);
-      n.querySelector(".stc-theme__code").innerHTML = addColorPreviews(n.querySelector(".stc-theme__code").textContent);
+      n.querySelector(
+        '[data-variable="variable.themeAuthorName"]'
+      ).textContent = d.author;
+      n.querySelector('[data-variable="variable.themeName"]').textContent =
+        d.title;
+      n.querySelector('[data-variable="variable.themeCode"]').textContent =
+        d.code;
+      n.querySelector('[data-variable="variable.themeTag"]').textContent = d.tag
+        .map((_e) => capitalize(_e))
+        .join(", ");
+      d.id
+        ? setTooltip(n.querySelector(".info-icon"), "ID: " + d.id, "right")
+        : setTooltip(
+            n.querySelector(".info-icon"),
+            "ID: " + getLangText("tooltip.prevVerData"),
+            "right"
+          );
+      n.querySelector(".stc-theme__tag").outerHTML += accessibilityBadge(
+        checkAccessibility(d.code)[0]
+      );
+      n.querySelector(".stc-theme__code").innerHTML = addColorPreviews(
+        n.querySelector(".stc-theme__code").textContent
+      );
       n.querySelector(".stc-theme__code").setAttribute("data-code", d.code);
-      n.querySelector(".stc-theme__author__avatar").style.filter = "hue-rotate(" + Math.floor(Math.random() * 36) + "0deg)";
+      n.querySelector(".stc-theme__author__avatar").style.filter =
+        "hue-rotate(" + Math.floor(Math.random() * 36) + "0deg)";
       n.querySelector(".button_preview").addEventListener("click", preview);
       n.querySelector(".button_copy").addEventListener("click", copy);
       document.querySelector(".theme_item_template").parentElement.append(n);
@@ -163,7 +219,9 @@ function setData(data) {
   } else {
     let n = document.querySelector(".theme_item_template").cloneNode(true);
     n.classList.remove("theme_item_template");
-    n.innerHTML = `<div class="not-found"><h3>${getLangText("interface.notFoundLead")}</h3><p>${getLangText("interface.notFoundDescription")}</p></div>`;
+    n.innerHTML = `<div class="not-found"><h3>${getLangText(
+      "interface.notFoundLead"
+    )}</h3><p>${getLangText("interface.notFoundDescription")}</p></div>`;
     document.querySelector(".theme_item_template").parentElement.append(n);
   }
 }
@@ -172,9 +230,13 @@ function refresh() {
 }
 function editorStatus() {
   if (document.querySelector(".editor_input").value == "") {
-    document.querySelector(".editor + .placeholder > .placeholder").classList.remove("hidden");
+    document
+      .querySelector(".editor + .placeholder > .placeholder")
+      .classList.remove("hidden");
   } else {
-    document.querySelector(".editor + .placeholder > .placeholder").classList.add("hidden");
+    document
+      .querySelector(".editor + .placeholder > .placeholder")
+      .classList.add("hidden");
   }
   // document.querySelector(".editor_label>p").textContent = document.querySelector(".editor_input").value;
 }
@@ -190,26 +252,48 @@ function editorPreview() {
   document.querySelector(".editor_input").value = cache;
   let preview = addColorPreviews(document.querySelector(".editor_input").value);
   document.querySelector(".editor_input_preview_inner").innerHTML = preview;
-  document.querySelector(".editor_input").setAttribute("data-clear-code", document.querySelector(".editor_input").value);
+  document
+    .querySelector(".editor_input")
+    .setAttribute(
+      "data-clear-code",
+      document.querySelector(".editor_input").value
+    );
   document.querySelector(".editor_input").value = "";
   checkAccessibility(cache);
   getColorScheme(cache);
 }
 function editorFix() {
-  document.querySelector(".editor_input").value = document.querySelector(".editor_input").getAttribute("data-clear-code");
+  document.querySelector(".editor_input").value = document
+    .querySelector(".editor_input")
+    .getAttribute("data-clear-code");
   document.querySelector(".editor_input_preview_inner").innerHTML = "";
   editorStatus();
 }
 function preview(e) {
-  getColorScheme(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
-  checkAccessibility(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
+  getColorScheme(
+    e.target
+      .closest(".renderer")
+      .querySelector(".stc-theme__code")
+      .getAttribute("data-code")
+  );
+  checkAccessibility(
+    e.target
+      .closest(".renderer")
+      .querySelector(".stc-theme__code")
+      .getAttribute("data-code")
+  );
 }
 function copy(e) {
   navigator.permissions.query({ name: "clipboard-write" }).then((r) => {
     if (r.state == "denied") {
       Swal.fire("Error", "Writing to the clipboard has been denied", "error");
     } else {
-      navigator.clipboard.writeText(e.target.closest(".renderer").querySelector(".stc-theme__code").getAttribute("data-code"));
+      navigator.clipboard.writeText(
+        e.target
+          .closest(".renderer")
+          .querySelector(".stc-theme__code")
+          .getAttribute("data-code")
+      );
       iziToast.show({
         title: "Copied!!",
         color: "green",
@@ -234,7 +318,10 @@ function openEditModal() {
 }
 function search() {
   $("#search-modal").iziModal("close");
-  let q = document.querySelector("#search__q").value != "" ? document.querySelector("#search__q").value : "";
+  let q =
+    document.querySelector("#search__q").value != ""
+      ? document.querySelector("#search__q").value
+      : "";
   let qt =
     document.querySelector("#search__qt").value != ""
       ? JSON.stringify(
@@ -244,8 +331,13 @@ function search() {
             .map((e) => e.replaceAll(" ", ""))
         )
       : "";
-  let qtc = document.querySelector("#search__qt").value != "" ? "tag:" + document.querySelector("#search__qt").value.replaceAll(" ", ",") : "";
-  document.querySelector("#search_keyword").textContent = q == "" && qt == "" ? getLangText("interface.search") : `${q} ${qtc}`;
+  let qtc =
+    document.querySelector("#search__qt").value != ""
+      ? "tag:" +
+        document.querySelector("#search__qt").value.replaceAll(" ", ",")
+      : "";
+  document.querySelector("#search_keyword").textContent =
+    q == "" && qt == "" ? getLangText("interface.search") : `${q} ${qtc}`;
   get(q, qt);
 }
 function clearSearch() {
@@ -262,22 +354,32 @@ function checkAccessibility(colorstr) {
     [colors[4], colors[5]],
     [colors[2], colors[3]],
     [colors[7], "#ffffff"],
+    [colors[0], colors[6]],
     [colors[8], colors[9]],
   ];
-  let elementName = ["Sidebar-Base", "Sidebar-Hover", "Sidebar-Select", "Mention-Badge", "Topbar"];
+  let elementName = [
+    "Sidebar-Base",
+    "Sidebar-Hover",
+    "Sidebar-Select",
+    "Mention-Badge",
+    "Active-Badge",
+    "Topbar",
+  ];
   let unavailableElement = [];
-  let count = -1;
-  element.forEach((e) => {
-    count++;
+  let dataAccessibilityarr = [];
+  element.forEach((e, i) => {
     let contrastRatio = chroma.contrast(e[0], e[1]);
     details.push(`${e[0]} / ${e[1]} => ${contrastRatio}`);
     if (contrastRatio >= 7.0) {
       score.push("S");
+      dataAccessibilityarr.push("class-s");
     } else if (contrastRatio >= 4.5) {
       score.push("A");
+      dataAccessibilityarr.push("class-a");
     } else {
       score.push("-");
-      unavailableElement.push(elementName[count]);
+      unavailableElement.push(elementName[i]);
+      dataAccessibilityarr.push("incompatible");
     }
   });
   let resultClass = ["s", "a", "-"];
@@ -292,17 +394,33 @@ function checkAccessibility(colorstr) {
   }
   console.debug(`${resultClass} (${score})`);
   console.debug(details);
-  let unavailableElementstr = unavailableElement.length != 0 ? unavailableElement.join(", ") : getLangText("accessibility.none");
-  return [resultClass, unavailableElementstr];
+  let unavailableElementstr =
+    unavailableElement.length != 0
+      ? unavailableElement.join(", ")
+      : getLangText("accessibility.none");
+  return [resultClass, unavailableElementstr, dataAccessibilityarr];
 }
 function accessibilityBadge(score) {
   let url = "";
   if (score == "s") {
-    url = "https://img.shields.io/badge/" + getLangText("interface.accessibility") + "-" + getLangText("interface.accessibilityS") + "-009dc4?style=flat";
+    url =
+      "https://img.shields.io/badge/" +
+      getLangText("interface.accessibility") +
+      "-" +
+      getLangText("interface.accessibilityS") +
+      "-009dc4?style=flat";
   } else if (score == "a") {
-    url = "https://img.shields.io/badge/" + getLangText("interface.accessibility") + "-" + getLangText("interface.accessibilityA") + "-48a34f?style=flat";
+    url =
+      "https://img.shields.io/badge/" +
+      getLangText("interface.accessibility") +
+      "-" +
+      getLangText("interface.accessibilityA") +
+      "-48a34f?style=flat";
   } else {
-    url = "https://img.shields.io/badge/" + getLangText("interface.accessibility") + "----CCCCCC?style=flat";
+    url =
+      "https://img.shields.io/badge/" +
+      getLangText("interface.accessibility") +
+      "----CCCCCC?style=flat";
   }
   let tag = `<img class="stc-theme__accessibility-badge" src="${url}">`;
   return tag;
@@ -312,8 +430,29 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 function checkEditingColor(colorstr) {
-  document.querySelector(".accessibility_badge>.badge").innerHTML = accessibilityBadge(checkAccessibility(colorstr)[0]);
-  setTooltip(".accessibility_badge>.badge", getLangText("interface.incompatible") + ": " + checkAccessibility(colorstr)[1], "top");
+  document.querySelector(".accessibility_badge>.badge").innerHTML =
+    accessibilityBadge(checkAccessibility(colorstr)[0]);
+  document.querySelector(".accessibility_badge>.badge").hasOwnProperty("_tippy")
+    ? modifyToolTip(
+        ".accessibility_badge>.badge",
+        getLangText("interface.incompatible") +
+          ": " +
+          checkAccessibility(colorstr)[1]
+      )
+    : setTooltip(
+        ".accessibility_badge>.badge",
+        getLangText("interface.incompatible") +
+          ": " +
+          checkAccessibility(colorstr)[1],
+        "top"
+      );
+
+  let accessibilities = Array.from(
+    document.querySelectorAll("#edit-modal .label-with-icon > span")
+  );
+  accessibilities.map((e, i) =>
+    e.setAttribute("data-accessibility", checkAccessibility(colorstr)[2][i])
+  );
   // document.querySelector(".accessibility_badge>.tooltip").textContent =
   //   getLangText("interface.incompatible") +
   //   ": " +
@@ -322,10 +461,15 @@ function checkEditingColor(colorstr) {
 function onEditorBlured() {
   editorPreview();
   setVisualEditor();
-  checkEditingColor(document.querySelector(".editor_input").getAttribute("data-clear-code"));
+  checkEditingColor(
+    document.querySelector(".editor_input").getAttribute("data-clear-code")
+  );
 }
 function setVisualEditor() {
-  let data = document.querySelector(".editor_input").getAttribute("data-clear-code").split(",");
+  let data = document
+    .querySelector(".editor_input")
+    .getAttribute("data-clear-code")
+    .split(",");
   $(".sidebar_bg").val(data[0]);
   $(".sidebar_item_fg").val(data[5]);
   $(".sidebar_item_bg_select").val(data[2]);
@@ -344,7 +488,18 @@ function apply2Editor(event) {
   let tar = event.target;
   let tarclass = Array.from(tar.classList).filter((e) => e != "input")[0];
   $("." + tarclass).val(tar.value);
-  let data = [$(".sidebar_bg").val(), "#000000", $(".sidebar_item_bg_select").val(), $(".sidebar_item_fg_select").val(), $(".sidebar_item_bg_hover").val(), $(".sidebar_item_fg").val(), $(".active_badge").val(), $(".mention_badge").val(), $(".topbar_bg").val(), $(".topbar_fg").val()];
+  let data = [
+    $(".sidebar_bg").val(),
+    "#000000",
+    $(".sidebar_item_bg_select").val(),
+    $(".sidebar_item_fg_select").val(),
+    $(".sidebar_item_bg_hover").val(),
+    $(".sidebar_item_fg").val(),
+    $(".active_badge").val(),
+    $(".mention_badge").val(),
+    $(".topbar_bg").val(),
+    $(".topbar_fg").val(),
+  ];
   $(".editor_input").val(data.join(","));
   onEditorBlured();
 }
@@ -357,7 +512,15 @@ function setTooltip(q, c, p) {
     arrow: false,
   });
 }
+function modifyToolTip(q, c) {
+  document.querySelector(q)._tippy.setContent(c);
+}
 setLangText();
+$("#post__title").attr("placeholder", getLangText("modal.post.themeName"));
+$("#post__tag").attr("placeholder", getLangText("modal.post.themeTags"));
+$("#post__author").attr("placeholder", getLangText("modal.post.userName"));
+$("#search__q").attr("placeholder", getLangText("modal.search.themeName"));
+$("#search__qt").attr("placeholder", getLangText("modal.search.themeTags"));
 onEditorBlured();
 // getColorScheme();
 $("#search-modal").iziModal();

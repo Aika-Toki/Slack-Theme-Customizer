@@ -16,12 +16,12 @@
     "ja_jp": "アクセシビリティ"
   },
   "interface.accessibilityA": {
-    "en_us": "Class--A",
-    "ja_jp": "良"
+    "en_us": "WCAG__AA",
+    "ja_jp": "WCAG__AA (良)"
   },
   "interface.accessibilityS": {
-    "en_us": "Class--S",
-    "ja_jp": "優"
+    "en_us": "WCAG__AAA",
+    "ja_jp": "WCAG__AAA (優)"
   },
   "interface.channel": {
     "en_us": "Channel",
@@ -95,6 +95,38 @@
     "en_us": "English(United States)",
     "ja_jp": "日本語"
   },
+  "modal.post.post": {
+    "en_us": "Post",
+    "ja_jp": "投稿"
+  },
+  "modal.post.themeName": {
+    "en_us": "Theme Name",
+    "ja_jp": "テーマ名"
+  },
+  "modal.post.themeTags": {
+    "en_us": "Theme Tags ―― separated by spaces",
+    "ja_jp": "タグ (スペースで区切る)"
+  },
+  "modal.post.userName": {
+    "en_us": "Username",
+    "ja_jp": "ユーザー名"
+  },
+  "modal.search.clear": {
+    "en_us": "Clear",
+    "ja_jp": "クリア"
+  },
+  "modal.search.search": {
+    "en_us": "Search",
+    "ja_jp": "検索"
+  },
+  "modal.search.themeName": {
+    "en_us": "Search Theme Name",
+    "ja_jp": "検索するテーマ名"
+  },
+  "modal.search.themeTags": {
+    "en_us": "Search Tags ―― separated by spaces",
+    "ja_jp": "検索するタグ (スペースで区切る)"
+  },
   "tooltip.colorScheme": {
     "en_us": "Toggle Color-scheme",
     "ja_jp": "カラースキームを切替"
@@ -106,6 +138,10 @@
   "tooltip.materialize": {
     "en_us": "Materialize",
     "ja_jp": "マテリアルデザインにする"
+  },
+  "tooltip.prevVerData": {
+    "en_us": "Unknown (Previous Version Data)",
+    "ja_jp": "不明 (過去のバージョンのデータ)"
   },
   "tooltip.random": {
     "en_us": "Random!",
